@@ -37,14 +37,14 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Witamy spowrotem!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Witamy z powrotem!</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" method="POST" action="login.php">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" id="Email" aria-describedby="emailHelp" placeholder="Wprowadź adres e-mail...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" id="Password" placeholder="Hasło">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -52,14 +52,12 @@
                         <label class="custom-control-label" for="customCheck">Zapamiętaj mnie</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Zaloguj się
-                    </a>
+                    <input type="submit" id="log" value="Zaloguj się" class="btn btn-primary btn-user btn-block">
                     <hr>
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="forgot-password.html">Zapomniałeś hasło?</a>
+                    <a class="small" href="forgot-password.html">Zapomniałeś hasła?</a>
                   </div>
                   <div class="text-center">
                     <a class="small" href="register.html">Stwórz konto!</a>
@@ -85,6 +83,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  
+  <!-- Validate login form-->
+  <script src="js/loginhandle.js"></script>
 
 </body>
 

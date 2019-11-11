@@ -23,6 +23,12 @@
 		$rpasswordvm = preg_match_all($patternpm,$rpassword);
 	}
 ?>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script type="text/javascript">
 	// validation
 	var namet = "<?php echo $namev; ?>";
@@ -60,6 +66,27 @@
 	}
 	else if(rpswt == 0 && rpswmt == 0){
 		$('#RPassword').addClass("border-danger");
+	}
+	if("<?php if(!empty($name)&&!empty($lname)&&!empty($email)&&!empty($password)&&!empty($rpassword)&&$namev&&$lnamev&&$emailv&&
+				($passwordv||$passwordvm)&&($rpasswordv||$rpasswordvm)&&$password==$rpassword){echo "1";}else{echo "0";}?>"==1){
+		//Variables for ajax
+		var name = "<?php echo $name; ?>";
+		var lname = "<?php echo $lname; ?>"; 
+		var email = "<?php echo $email; ?>"; 
+		var password = "<?php echo $password; ?>"; 
+		$.ajax({				
+				type: 'POST',  
+				url: 'new.php', 
+				data: { 
+					name: name,
+					lname: lname,
+					email: email,
+					password: password,
+				},
+				success: function(msg){
+				$("body").load('conf.html');
+				}
+		});
 	}
 </script>
 </html>
