@@ -8,7 +8,7 @@
 	$rpassword = $_POST['rpassword'];
 	$patternn = "/^[A-ZĘĄĆŻŹÓŁŃŚ]{1}[a-zęąćżźółńś]{1,}$/";
 	$patterne = "/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/";
-	$patternp = "/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/";
+	$patternp = "/(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/";
 	$patternpm = "/(?=^.{6,}$)(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$)/";
 	if(empty($name)||empty($lname)||empty($email)||empty($password)||empty($rpassword)){
 		echo "Uzupełnij wszystkie pola!";
