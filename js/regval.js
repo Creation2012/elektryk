@@ -34,4 +34,20 @@ $(document).ready(function(){
 			$('#PB').html('<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 33.3%" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100"></div>');
 		}
 	});
+	
+	//Password visibility
+	$('#vis').click(function(){
+		if($('#vis').hasClass("fa-eye")){
+			$('#vis').removeClass("fa-eye");
+			$('#vis').addClass("fa-eye-slash");
+			document.getElementById('Password').type = "text";
+			document.getElementById('RPassword').type = "text";
+		}
+		else if($('#vis').hasClass("fa-eye-slash")){
+			$('#vis').addClass("fa-eye");
+			$('#vis').removeClass("fa-eye-slash");
+			document.getElementById('Password').type = "password";
+			document.getElementById('RPassword').type = "password";
+		}
+	});
 });
