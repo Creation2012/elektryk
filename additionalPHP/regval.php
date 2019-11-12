@@ -75,8 +75,8 @@
 		var email = "<?php echo $email; ?>"; 
 		var password = "<?php echo $password; ?>"; 
 		$.ajax({				
-				type: 'POST',  
-				url: 'new.php', 
+				method: 'POST',  
+				url: 'additionalPHP/new.php', 
 				data: { 
 					name: name,
 					lname: lname,

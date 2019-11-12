@@ -6,17 +6,25 @@
 	$hash = sha1($email);
 	$password = sha1($password);
 	include('connect.php');
-	$pdo -> exec("INSERT INTO user (user_firstname, user_lastname, user_email, user_password, user_hash) values 
-	('".$name."','".$lname."','".$email."','".$password."','".$hash."');");
+	
+	$stmt = $pdo -> prepare("INSERT INTO user (user_firstname, user_lastname, user_email, user_password, user_hash) values (:name, :lname, :email, :password, :hash);");
+	
+	$stmt -> bindParam(':name',$name, PDO::PARAM_STR);
+	$stmt -> bindParam(':lname',$lname, PDO::PARAM_STR);
+	$stmt -> bindParam(':email',$email, PDO::PARAM_STR);
+	$stmt -> bindParam(':password',$password, PDO::PARAM_STR);
+	$stmt -> bindParam(':hash',$hash, PDO::PARAM_STR);
+	
+	$stmt -> execute();
 	
 	$to      = $email; // Send email to our user
 	$subject = 'Signup | Verification'; // Give the email a subject 
 	$message = '
 	 
-	Thanks for signing up!
-	Your account has been created, you can login after you have activated your account by pressing the url below.
+	Dziękujęmy za zarejestrowanie się!
+	Twoje konto zostało utworzone, aby się zalogować mmusisz aktywować konto klikając poniższy link.
 	 
-	Please click this link to activate your account:
+	Proszę kliknij na link aby aktytować konto:
 	http://www.quartak.000webhostapp.com/verify.php?email='.$email.'&hash='.$hash.'
 	 
 	'; // Our message above including the link
