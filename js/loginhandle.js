@@ -20,7 +20,7 @@ $(document).ready(function(){
 	
 	$('#log').click(function(){
 		$('#log').preventDefault();
-		if($('#Email').val()==0||$('#Password').val()==0){
+		if($('#Email').val()==""||$('#Password').val()==""){
 			$('#Email').addClass("border-danger");
 			$('#Password').addClass("border-danger");
 		}
