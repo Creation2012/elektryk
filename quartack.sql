@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Lis 2019, 18:45
--- Wersja serwera: 10.4.6-MariaDB
--- Wersja PHP: 7.3.9
+-- Czas generowania: 12 Lis 2019, 14:34
+-- Wersja serwera: 10.4.8-MariaDB
+-- Wersja PHP: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `projek2`
+-- Baza danych: `quartack`
 --
 
 -- --------------------------------------------------------
@@ -116,7 +116,7 @@ CREATE TABLE `task` (
 --
 
 INSERT INTO `task` (`task_id`, `task_name`, `task_description`, `user_id`, `complete`, `task_start`, `task_end`) VALUES
-(2, 'testowe zadanie', 'zadanie ktore przetestuje cos', 2, 0, '2019-11-11 18:41:16', '0000-00-00 00:00:00');
+(2, 'testowe zadanie', 'zadanie ktore przetestuje cos', 1, 0, '2019-11-11 18:41:16', '0000-00-00 00:00:00');
 
 --
 -- Wyzwalacze `task`
@@ -184,7 +184,19 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_phone`, `user_type`, `user_active`, `user_created`, `user_modified`, `user_verifyEmail`, `user_hash`, `etat_id`) VALUES
-(2, 'bartek', 'testowy', 'bartek@testowy.pl', 'haslo', '123456789', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '123abc', 1);
+(1, 'bartek', 'testowy', 'bartek@testowy.pl', 'ff12bbd8c907af067070211d87bdf098be17375b', '123456789', 0, 0, '0000-00-00 00:00:00', '2019-11-12 14:07:45', 0, '123abc', 1),
+
+--
+-- Wyzwalacze `user`
+--
+DELIMITER $$
+CREATE TRIGGER `user_created` BEFORE INSERT ON `user` FOR EACH ROW SET NEW.user_created = CURRENT_DATE()
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `user_modified` BEFORE UPDATE ON `user` FOR EACH ROW SET NEW.user_modified = NOW()
+$$
+DELIMITER ;
 
 --
 -- Indeksy dla zrzutów tabel
@@ -262,7 +274,7 @@ ALTER TABLE `task`
 -- AUTO_INCREMENT dla tabeli `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ograniczenia dla zrzutów tabel
