@@ -1,7 +1,7 @@
 <?php
 	include 'connect.php';
-	$email = mysql_escape_string($_POST['email']);
-	$password = mysql_escape_string($_POST['password']);
+	$email = $_POST['email'];
+	$password = $_POST['password'];
 	$password = sha1($password);
 	$stmt = $pdo->query('SELECT user_id, user_email, user_password FROM user WHERE user_email = "'.$email.'", user_password = "'.$password.'", user_verifyEmail = 1');
 	if($stmt->rowCount()==1){
