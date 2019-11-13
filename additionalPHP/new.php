@@ -29,6 +29,6 @@
 	 
 	'; // Our message above including the link
 						 
-	$headers = 'From:noreply@quartak.com' . "\r\n"; // Set from headers
+	$headers = 'From:noreply@quartack.com' . "\r\n"; // Set from headers
 	mail($to, $subject, $message, $headers); // Send our email
 ?>
