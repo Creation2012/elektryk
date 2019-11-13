@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 12 Lis 2019, 14:34
+-- Czas generowania: 13 Lis 2019, 09:20
 -- Wersja serwera: 10.4.8-MariaDB
--- Wersja PHP: 7.3.10
+-- Wersja PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -183,14 +183,17 @@ CREATE TABLE `user` (
 -- Zrzut danych tabeli `user`
 --
 
---INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_phone`, `user_type`, `user_active`, `user_created`, `user_modified`, `user_verifyEmail`, `user_hash`, `etat_id`) VALUES
---(1, 'bartek', 'testowy', 'bartek@testowy.pl', 'ff12bbd8c907af067070211d87bdf098be17375b', '123456789', 0, 0, '0000-00-00 00:00:00', '2019-11-12 14:07:45', 0, '123abc', 1),
+INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_phone`, `user_type`, `user_active`, `user_created`, `user_modified`, `user_verifyEmail`, `user_hash`, `etat_id`) VALUES
+(1, 'bartek', 'test', 'bartek@testowy.pl', 'haslo1', '123456789', 0, 0, '2019-11-12 00:00:00', '2019-11-12 11:49:59', 0, '123abc', 1),
+(3, 'Bartosz', 'Szkuta', 'bartosz@szkuta.pl', '', '', 0, 0, '2019-11-13 00:00:00', '0000-00-00 00:00:00', 0, '2a21bec96f1e2fdc2a3f8d3786489259', NULL);
 
 --
 -- Wyzwalacze `user`
 --
 DELIMITER $$
-CREATE TRIGGER `user_created` BEFORE INSERT ON `user` FOR EACH ROW SET NEW.user_created = CURRENT_DATE()
+CREATE TRIGGER `user_created` BEFORE INSERT ON `user` FOR EACH ROW BEGIN
+	SET NEW.user_created = CURRENT_DATE();
+END
 $$
 DELIMITER ;
 DELIMITER $$
