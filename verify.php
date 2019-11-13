@@ -39,12 +39,13 @@
 					<?php 
 					include 'connect.php';
 					if(isset($_GET['hash'])&&isset($_GET['email'])){
-						$hash = mysql_escape_string($_GET['hash']);
-						$email = mysql_escape_string($_GET['email']);
-						$stmt = $pdo -> query("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = '".$email."', user_hash = '".$hash."', user_verifyEmail = 0 ;");
+						$hash = $pdo -> quote($_GET['hash']);
+						$email = $pdo -> quote($_GET['email']);
+						$stmt = $pdo -> query("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 0 ;");
 						if($stmt->rowCount()==1){
 							$stmt -> closeCursor();
-							$stmt = $pdo -> exec("UPDATE user SET user_verifyEmail=1 WHERE user_email = '".$email."', user_hash = '".$hash."', user_verifyEmail = 0 ;");
+							$stmt = $pdo -> prepare("UPDATE user SET user_verifyEmail=1 WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 0 ;");
+							$stmt -> execute();
 							echo '
 							  <div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Udało się!</h1>

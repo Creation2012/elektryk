@@ -2,9 +2,9 @@
 	$name = $_POST['name'];
 	$lname = $_POST['lname'];
 	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$pswd = $_POST['password'];
 	$hash = sha1($email);
-	$password = sha1($password);
+	$password = sha1($pswd);
 	include('connect.php');
 	
 	$stmt = $pdo -> prepare("INSERT INTO user (user_firstname, user_lastname, user_email, user_password, user_hash) values (:name, :lname, :email, :password, :hash);");

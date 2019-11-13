@@ -67,8 +67,7 @@
 	else if(rpswt == 0 && rpswmt == 0){
 		$('#RPassword').addClass("border-danger");
 	}
-	if("<?php if(!empty($name)&&!empty($lname)&&!empty($email)&&!empty($password)&&!empty($rpassword)&&$namev&&$lnamev&&$emailv&&
-				($passwordv||$passwordvm)&&($rpasswordv||$rpasswordvm)&&$password==$rpassword){echo "1";}else{echo "0";}?>"==1){
+	if("<?php if(!empty($name)&&!empty($lname)&&!empty($email)&&!empty($password)&&!empty($rpassword)&&$namev&&$lnamev&&$emailv&&($passwordv||$passwordvm)&&($rpasswordv||$rpasswordvm)&&$password==$rpassword){echo "1";}else{echo "0";}?>"==1){
 		//Variables for ajax
 		var name = "<?php echo $name; ?>";
 		var lname = "<?php echo $lname; ?>"; 

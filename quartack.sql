@@ -183,8 +183,8 @@ CREATE TABLE `user` (
 -- Zrzut danych tabeli `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_phone`, `user_type`, `user_active`, `user_created`, `user_modified`, `user_verifyEmail`, `user_hash`, `etat_id`) VALUES
-(1, 'bartek', 'testowy', 'bartek@testowy.pl', 'ff12bbd8c907af067070211d87bdf098be17375b', '123456789', 0, 0, '0000-00-00 00:00:00', '2019-11-12 14:07:45', 0, '123abc', 1),
+--INSERT INTO `user` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_phone`, `user_type`, `user_active`, `user_created`, `user_modified`, `user_verifyEmail`, `user_hash`, `etat_id`) VALUES
+--(1, 'bartek', 'testowy', 'bartek@testowy.pl', 'ff12bbd8c907af067070211d87bdf098be17375b', '123456789', 0, 0, '0000-00-00 00:00:00', '2019-11-12 14:07:45', 0, '123abc', 1),
 
 --
 -- Wyzwalacze `user`
