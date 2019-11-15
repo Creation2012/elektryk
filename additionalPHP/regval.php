@@ -1,6 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <?php
+	$error = 0;
 	$name = $_POST['name'];
 	$lname = $_POST['lname'];
 	$email = $_POST['email'];
@@ -21,6 +22,13 @@
 		$rpasswordv = preg_match_all($patternp,$rpassword);
 		$passwordvm = preg_match_all($patternpm,$password);
 		$rpasswordvm = preg_match_all($patternpm,$rpassword);
+		include ('connect.php');
+		$stmt = $pdo -> prepare('SELECT user_email FROM user WHERE user_email = :email;')
+		$stmt -> bindParam(':email',$email, PDO::PARAM_STR);
+		if($stmt -> rowCount() != 0){
+			$error = 1;
+			echo "Ten email został już wykorzystany";
+		}
 	}
 ?>
 <!-- Bootstrap core JavaScript-->
@@ -67,7 +75,7 @@
 	else if(rpswt == 0 && rpswmt == 0){
 		$('#RPassword').addClass("border-danger");
 	}
-	if("<?php if(!empty($name)&&!empty($lname)&&!empty($email)&&!empty($password)&&!empty($rpassword)&&$namev&&$lnamev&&$emailv&&($passwordv||$passwordvm)&&($rpasswordv||$rpasswordvm)&&$password==$rpassword){echo "1";}else{echo "0";}?>"==1){
+	if("<?php if(!empty($name)&&!empty($lname)&&!empty($email)&&error!=1&&!empty($password)&&!empty($rpassword)&&$namev&&$lnamev&&$emailv&&($passwordv||$passwordvm)&&($rpasswordv||$rpasswordvm)&&$password==$rpassword){echo "1";}else{echo "0";}?>"==1){
 		//Variables for ajax
 		var name = "<?php echo $name; ?>";
 		var lname = "<?php echo $lname; ?>"; 

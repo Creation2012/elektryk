@@ -16,7 +16,7 @@
 	$stmt -> bindParam(':hash',$hash, PDO::PARAM_STR);
 	
 	$stmt -> execute();
-	
+	$stmt -> closeCursor();
 	$to      = $email; // Send email to our user
 	$subject = 'Signup | Verification'; // Give the email a subject 
 	$message = '

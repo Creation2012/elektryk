@@ -18,8 +18,8 @@ $(document).ready(function(){
 			$('#Password').addClass("border-danger");
 		}
 	
-	$('#log').click(function(){
-		$('#log').preventDefault();
+	$('#log').click(function(event){
+		event.preventDefault();
 		if($('#Email').val()==""||$('#Password').val()==""){
 			$('#Email').addClass("border-danger");
 			$('#Password').addClass("border-danger");

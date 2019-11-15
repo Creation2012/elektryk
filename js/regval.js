@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//Sending data to server
-	$('#reg').on('click',function(){
+	$('#reg').on('click',function(event){
 		event.preventDefault();
 		var name= $('#Name').val();
 		var lname = $('#LName').val();
