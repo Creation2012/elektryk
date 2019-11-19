@@ -4,9 +4,13 @@ $(document).ready(function(){
 		event.preventDefault();
 		var password = $('#Password').val();
 		var rpassword = $('#RPassword').val();
+		var hash = "<?php echo $_GET['hash']; ?>";
+		var email = "<?php echo $_GET['email']; ?>";
 		$('#error').load('additionalPHP/chgpswd.php',{
 			password: password,
-			rpassword: rpassword
+			rpassword: rpassword,
+			hash: hash,
+			email: email
 		});
 	});
 	
