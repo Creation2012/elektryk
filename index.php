@@ -14,7 +14,7 @@
 		echo "<title>".$_SESSION['login']."</title>";
 	}
 	else{
-		echo "<title>SB Admin 2 - Dashboard</title>";
+		//header("Location: login.html");
 	}
 	
 ?>
