@@ -41,31 +41,14 @@
 					if(isset($_GET['hash'])&&isset($_GET['email'])){
 						$hash = $pdo -> quote($_GET['hash']);
 						$email = $pdo -> quote($_GET['email']);
-						$stmt = $pdo -> query("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 0 ;");
+						$stmt = $pdo -> query("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 1 ;");
 						if($stmt->rowCount()==1){
-							$stmt -> closeCursor();
-							$stmt = $pdo -> prepare("UPDATE user SET user_verifyEmail=1 WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 0 ;");
-							$stmt -> execute();
+							
 							echo '
 							  <div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Udało się!</h1>
 							  </div>
-							  '/*TA CZEST NIE JEST DOKONCZONA 
-							  NOWY FORMULARZ
-							  EDYCJA HASHA
-							  STRONA ZMIENIAJACA HASLO*/'
-							  <form class="user" method="POST" action="additionalPHP/regval.php">
-								<div class="form-group row">
-								  <div class="col-sm-6 mb-3 mb-sm-0">
-									<input type="text" class="form-control form-control-user" id="Name" placeholder="Imię">
-								  </div>
-								  <div class="col-sm-6">
-									<input type="text" class="form-control form-control-user" id="LName" placeholder="Nazwisko">
-								  </div>
-								</div>
-								<div class="form-group">
-								  <input type="email" class="form-control form-control-user" id="Email" placeholder="Adres e-mail">
-								</div>
+							  <form class="user" method="POST" action="additionalPHP/chgpswd.php">
 								<div class="form-group">
 									<p style="text-align: center">Siła hasła</p>
 									<div class="progress" id="PB">
@@ -85,6 +68,7 @@
 								</div>
 								<input type="submit" id="reg" class="btn btn-primary btn-user btn-block" value="Zarejestruj się">
 								<hr>
+								<div id="error"></div>
 							  </form>';
 						}
 						else{
@@ -93,7 +77,7 @@
 								<h1 class="h4 text-gray-900 mb-4">Aktywacja!</h1>
 							  </div>
 							  <div>
-								Twoje konto zostało już aktywowane albo posiadasz nie prawidłowy link!
+								Nie istnieje konto z podanym e-mailem!
 							  </div>
 							  <hr>
 							  <div class="text-center">
@@ -107,7 +91,7 @@
 								<h1 class="h4 text-gray-900 mb-4">Aktywacja!</h1>
 							  </div>
 							  <div>
-								Twoje konto zostało już aktywowane albo posiadasz nie prawidłowy link!
+								Nie istnieje konto z podanym e-mailem!
 							  </div>
 							  <hr>
 							  <div class="text-center">
@@ -115,6 +99,7 @@
 							  </div>';
 					}
 					
+					$stmt -> closeCursor();
 					?>
                 </div>
               </div>
@@ -137,6 +122,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  
+  <!-- Custom scripts for all pages-->
+  <script src="js/chgpswd.js"></script>
 
 </body>
 

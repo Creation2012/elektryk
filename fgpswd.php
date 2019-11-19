@@ -29,10 +29,10 @@
 			$subject = 'Forgot Password | E-mail'; // Give the email a subject 
 			$message = '
 			 
-			Zostało nam zgłoszone, że zapomniałeś swoje hasło!
+			Zostało nam zgłoszone, że hasło zostało zapomniane!
 			Jeżeli to nie ty wysłałeś zgłoszenie, zignoruj ten e-mail.
 			 
-			Jeżeli jednak to ty zapomniałeś swoje hasło
+			Jeżeli jednak to ty jesteś autorem żądania
 			proszę kliknij na ten link aby przejść do panelu zmiany hasła:
 			http://www.quartak.000webhostapp.com/forgotpassword.php?email='.$email.'&hash='.$rand.'
 			 
