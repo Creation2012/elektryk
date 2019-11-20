@@ -26,7 +26,9 @@
 		include ('connect.php');
 		$stmt = $pdo -> prepare('SELECT user_email FROM user WHERE user_email = :email;');
 		$stmt -> bindParam(':email',$email, PDO::PARAM_STR);
-		if($stmt -> rowCount() != 0){
+		$stmt -> execute();
+		$rows = $stmt -> rowCount();
+		if($rows != 0){
 			$error = 1;
 			echo "Ten email został już wykorzystany";
 		}

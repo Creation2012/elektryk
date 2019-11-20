@@ -3,7 +3,7 @@
 	$port = '3306'; //domyślnie jest to port 3306
     $username = 'root';
     $passworddb = '';
-    $database = 'quartack'; //'produkty'
+    $database = 'id11549344_quartack'; //'produkty'
 	
 	try {
 		$pdo = new PDO('mysql:host=' . $mysql_host . ';dbname=' . $database . ';port=' . $port, $username, $passworddb);

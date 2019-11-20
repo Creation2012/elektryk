@@ -18,7 +18,7 @@
 	$stmt -> execute();
 	$stmt -> closeCursor();
 	$to      = $email; // Send email to our user
-	$subject = 'Signup | Verification'; // Give the email a subject 
+	$subject = 'Rejestracja | Weryfikacja'; // Give the email a subject 
 	$message = '
 	 
 	Dziękujęmy za zarejestrowanie się!
@@ -29,6 +29,6 @@
 	 
 	'; // Our message above including the link
 						 
-	$headers = 'From:noreply@quartack.com' . "\r\n"; // Set from headers
+	$headers = 'From:noreply@quartack.com'; // Set from headers
 	mail($to, $subject, $message, $headers); // Send our email
 ?>
