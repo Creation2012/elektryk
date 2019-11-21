@@ -8,7 +8,7 @@
 	include('connect.php');
 	
 	$stmt = $pdo -> prepare("INSERT INTO user (user_firstname, user_lastname, user_email, user_password, user_hash) values (:name, :lname, :email, :password, :hash);");
-	
+	echo ("INSERT INTO user (user_firstname, user_lastname, user_email, user_password, user_hash) values (:name, :lname, :email, :password, :hash);");
 	$stmt -> bindParam(':name',$name, PDO::PARAM_STR);
 	$stmt -> bindParam(':lname',$lname, PDO::PARAM_STR);
 	$stmt -> bindParam(':email',$email, PDO::PARAM_STR);
@@ -17,6 +17,7 @@
 	
 	$stmt -> execute();
 	$stmt -> closeCursor();
+	/*
 	$to      = $email; // Send email to our user
 	$subject = 'Rejestracja | Weryfikacja'; // Give the email a subject 
 	$message = '
@@ -30,5 +31,5 @@
 	'; // Our message above including the link
 						 
 	$headers = 'From:noreply@quartack.com'; // Set from headers
-	mail($to, $subject, $message, $headers); // Send our email
+	mail($to, $subject, $message, $headers); // Send our email*/
 ?>
