@@ -14,7 +14,7 @@
 		echo "<title>".$_SESSION['login']."</title>";
 	}
 	else{
-		//header("Location: login.html");
+		header("Location: https://quartak.000webhostapp.com/login.html?error=1");
 	}
 	
 ?>

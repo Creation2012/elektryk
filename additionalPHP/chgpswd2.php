@@ -7,7 +7,11 @@
 	$stmt -> bindParam(':password',$pswd, PDO::PARAM_STR);
 	$stmt -> bindParam(':email',$email, PDO::PARAM_STR); 
 	$stmt -> bindParam(':hash',$hash, PDO::PARAM_STR); 
-	$stmt -> execute();
+	$stmt -> execute([
+        'password'=>$pswd,
+        'email'=>$email,
+        'hash'=>$hash,
+        ]);
 	$stmt -> closeCursor();
 	
 ?>

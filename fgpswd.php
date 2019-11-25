@@ -10,11 +10,13 @@
 		$error = 1;
 	}
 	else{
-		include ('connect.php');
-		$stmt = $pdo -> prepare("SELECT user_email FROM user WHERE user_email = :email AND user_verifyEmail = 1;");
-		$stmt -> bindParam(':email',$email, PDO::PARAM_STR);
-		$stmt -> execute();
+		require('connect.php');
+		$stmt = $pdo -> prepare("SELECT user_email FROM user WHERE user_email = :email AND user_verifyEmail = 1");
+		$stmt -> execute([
+        'email'=>$email,
+        ]);
 		$var = $stmt-> rowCount();
+		echo $var;
 		$stmt -> closeCursor();
 		if($var != 1){
 			echo "Nie mogliśmy znaleźć podanego przez ciebie adresu e-mail";
@@ -23,10 +25,13 @@
 			//declaring new hash
 			$stmt = $pdo -> prepare("UPDATE user SET user_hash= :rand WHERE user_email = :email;");
 			$rand = sha1(mt_rand());
-			$stmt -> bindParam(':rand',$rand, PDO::PARAM_STR);
-			$stmt -> bindParam(':email',$email, PDO::PARAM_STR); 
+			$stmt -> execute([
+            'rand'=>$rand,
+            'email'=>$email,
+            ]);
+            
 			$to      = $email; // Send email to our user
-			$subject = 'Forgot Password | E-mail'; // Give the email a subject 
+			$subject = 'Zapomniane Hasło | E-mail'; // Give the email a subject 
 			$message = '
 			 
 			Zostało nam zgłoszone, że hasło zostało zapomniane!
@@ -34,7 +39,7 @@
 			 
 			Jeżeli jednak to ty jesteś autorem żądania
 			proszę kliknij na ten link aby przejść do panelu zmiany hasła:
-			http://www.quartak.000webhostapp.com/forgotpassword.php?email='.$email.'&hash='.$rand.'
+			http://quartak.000webhostapp.com/forgotpassword.php?email='.$email.'&hash='.$rand.'
 			 
 			'; // Our message above including the link
 								 
