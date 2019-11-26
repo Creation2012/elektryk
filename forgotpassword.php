@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Aktywacja konta</title>
+  <title>Zmiana hasła</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,13 +37,15 @@
               <div class="col-lg-6">
                 <div class="p-5">
 					<?php 
-					include 'connect.php';
+					require('connect.php');
 					if(isset($_GET['hash'])&&isset($_GET['email'])){
-						$hash = $pdo -> quote($_GET['hash']);
-						$email = $pdo -> quote($_GET['email']);
-						$stmt = $pdo -> query("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 1 ;");
+						$stmt = $pdo -> prepare("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = :email AND user_hash = :hash AND user_verifyEmail = 1 ");
+						$stmt -> execute([
+						    'email'=>$_GET['email'],
+						    'hash'=>$_GET['hash'],
+						    ]);
+						    
 						if($stmt->rowCount()==1){
-							
 							echo '
 							  <div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Udało się!</h1>
@@ -66,7 +68,7 @@
 								<div class="form-group row">
 									<i id="vis" class="far fa-eye" style="margin-left: 48%"></i>
 								</div>
-								<input type="submit" id="reg" class="btn btn-primary btn-user btn-block" value="Zarejestruj się">
+								<input type="submit" id="reg" class="btn btn-primary btn-user btn-block" value="Zmień hasło">
 								<hr>
 								<div id="error"></div>
 							  </form>';

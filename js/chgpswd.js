@@ -1,11 +1,27 @@
 $(document).ready(function(){
 	//Sending data to server
+	
+    var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
+    for (i = 0; i < sURLVariables.length; i++) {
+    sParameterName = sURLVariables[i].split('=');
+    
+    if (sParameterName[0] === sParam) {
+        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+    }
+    	}
+    }; 
+	
 	$('#reg').on('click',function(event){
 		event.preventDefault();
+		
 		var password = $('#Password').val();
 		var rpassword = $('#RPassword').val();
-		var hash = "<?php echo $_GET['hash']; ?>";
-		var email = "<?php echo $_GET['email']; ?>";
+		var hash = getUrlParameter("hash");
+		var email = getUrlParameter("email");
 		$('#error').load('additionalPHP/chgpswd.php',{
 			password: password,
 			rpassword: rpassword,

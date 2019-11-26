@@ -16,7 +16,6 @@
         'email'=>$email,
         ]);
 		$var = $stmt-> rowCount();
-		echo $var;
 		$stmt -> closeCursor();
 		if($var != 1){
 			echo "Nie mogliśmy znaleźć podanego przez ciebie adresu e-mail";
@@ -25,6 +24,8 @@
 			//declaring new hash
 			$stmt = $pdo -> prepare("UPDATE user SET user_hash= :rand WHERE user_email = :email;");
 			$rand = sha1(mt_rand());
+			
+			try{
 			$stmt -> execute([
             'rand'=>$rand,
             'email'=>$email,
@@ -45,6 +46,11 @@
 								 
 			$headers = 'From:noreply@quartack.com' . "\r\n"; // Set from headers
 			mail($to, $subject, $message, $headers); // Send our email
+			}
+			catch(Exception $e){
+			    echo 'Błąd: '.$e->getMessage();
+			}
+	    	$stmt -> closeCursor();
 		}
 	}
 ?>
@@ -60,5 +66,7 @@
 		if(error==1){
 			$('#Email').addClass('border-danger');
 		}
+		
+		$("body").load("conf2.html");
 </script>
 </html>

@@ -2,7 +2,7 @@
 <html> 
 <?php
 	$hash = $_POST['hash'];
-	$email = $_POST['hash'];
+	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$rpassword = $_POST['rpassword'];
 	$patternp = "/(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/";
@@ -54,15 +54,18 @@
 		var password = "<?php echo $password; ?>";
 		var hash = "<?php echo $hash; ?>";
 		var email = "<?php echo $email; ?>";
+		
+		alert(password);
+		alert(hash);
+		alert(email);
+		
 		$.ajax({				
 				method: 'POST',  
 				url: 'additionalPHP/chgpswd2.php', 
 				data: { 
 					password: password,
-					hash: hash
-				},
-				success: function(msg){
-				$("body").load('login.html');
+					hash: hash,
+					email: email
 				}
 		});
 	}

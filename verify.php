@@ -38,14 +38,23 @@
                 <div class="p-5">
 					<?php 
 					require('connect.php');
-					if((isset($_GET['hash']))&&(isset($_GET['email']))){
-						$hash = $pdo -> quote($_GET['hash']);
-						$email = $pdo -> quote($_GET['email']);
-						$stmt = $pdo -> query("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 0");
+					if(isset($_GET['hash'])&&isset($_GET['email'])){
+						$stmt = $pdo -> prepare("SELECT user_email, user_hash, user_verifyEmail FROM user WHERE user_email = :email AND user_hash = :hash AND user_verifyEmail = 0");
+
+                    		$stmt -> execute([
+                            'email'=>$_GET['email'],
+                            'hash'=>$_GET['hash'],
+                            ]);
+
 						if($stmt->rowCount()==1){
 							$stmt -> closeCursor();
-							$stmt = $pdo -> prepare("UPDATE user SET user_verifyEmail=1 WHERE user_email = $email, user_hash = $hash, user_verifyEmail = 0");
-							$stmt -> execute();
+							$stmt = $pdo -> prepare("UPDATE user SET user_verifyEmail=1 WHERE user_email = :email AND user_hash = :hash AND user_verifyEmail = 0");
+							
+							$stmt -> execute([
+                            'email'=>$_GET['email'],
+                            'hash'=>$_GET['hash'],
+                            ]);
+                            
 							echo '
 							  <div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Udało się!</h1>
