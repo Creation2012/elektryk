@@ -1,16 +1,19 @@
 <?php
-	include 'connect.php';
+	require('connect.php');
 	
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$password = sha1($password);
 	
 	$stmt = $pdo->prepare('SELECT user_id, user_email, user_password FROM user WHERE user_email = :email , user_password = :password, user_verifyEmail = 1;');
-	$stmt -> bindParam(':email',$email, PDO::PARAM_STR);
-	$stmt -> bindParam(':password',$password, PDO::PARAM_STR);
 
-	$stmt -> execute();
-
+	echo "SELECT user_id, user_email, user_password FROM user WHERE user_email = :email , user_password = :password, user_verifyEmail = 1";
+	
+	$stmt -> execute([
+		'email' => $email,
+		'password' => $password,
+	]);
+	
 	if($stmt->rowCount()==1){
 		
 		foreach($stmt as $row){
@@ -18,9 +21,9 @@
 		}
 		session_start();
 		$_SESSION['login']=$id;
-		header("Location: https://quartak.000webhostapp.com/index.php");
+		//header("Location: https://quartak.000webhostapp.com/index.php");
 	}
 	else{
-		header("Location: https://quartak.000webhostapp.com/login.html?error=1");
+		//header("Location: https://quartak.000webhostapp.com/login.html?error=1");
 	}
 ?>
