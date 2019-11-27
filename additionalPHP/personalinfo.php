@@ -51,4 +51,24 @@
 			</div>
 		</div>
 	</div>
+	<div class="col-lg-1">
+	</div>
+	<!-- Form to change photo-->
+	<div class="col-lg-5">
+		<div class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
+			<div class="card-header py-3 justify-content-md-center row ml-md-1 mr-md-1 border-top">
+				<h6 class="m-0 font-weight-bold text-primary">Zdjęcie</h6>
+			</div>
+			<div class="card-body">
+				<form class="col-lg-12">
+					<div class="col-lg-6" style="margin-left: 41.3%;">
+						<div class="row mt-md-3 mb-md-3"><img id="photo" class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
+					</div>
+					<div class="row justify-content-md-center">
+						<input type="submit" id="pdata" class="btn btn-primary mb-2" value="Zmień dane">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
