@@ -40,13 +40,13 @@
 				<form class="col-lg-12">
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Nowe hasło:</label>
-						<input type="text" class="form-control" id="Name" placeholder="Hasło">
+						<input type="text" class="form-control" id="Password" placeholder="Hasło">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Powtórz hasło:</label>
-						<input type="text" class="form-control" id="Surname" placeholder="Powtórz hasło">
+						<input type="text" class="form-control" id="RPassword" placeholder="Powtórz hasło">
 					</div>
-					<input type="submit" id="password" class="btn btn-primary mb-2" value="Zmień hasło">
+					<input type="submit" id="passwordnew" class="btn btn-primary mb-2" value="Zmień hasło">
 				</form>
 			</div>
 		</div>
@@ -64,8 +64,9 @@
 					<div class="col-lg-6" style="margin-left: 41.3%;">
 						<div class="row mt-md-3 mb-md-3"><img id="photo" class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
 					</div>
+					<input type="file" style="display: none;">
 					<div class="row justify-content-md-center">
-						<input type="submit" id="pdata" class="btn btn-primary mb-2" value="Zmień dane">
+						<input type="submit" id="pphoto" class="btn btn-primary mb-2" value="Zmień dane">
 					</div>
 				</form>
 			</div>
