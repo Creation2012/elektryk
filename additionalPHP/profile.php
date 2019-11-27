@@ -19,8 +19,8 @@
 				<div class="row justify-content-md-center">
 					<div class="col-6">
 						<div class="justify-content-md-center row mt-md-3 mb-md-3"><img class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
-						<div class="justify-content-md-center row mb-md-3"><div class="lasttask btn alert-danger btn-block">Debugowanie</div></div>
-						<div class="justify-content-md-center row"><button type="button" class="btn btn-primary userprofile btn-block">Przejdź do profilu</button></div>
+						<div class="justify-content-md-center row mb-md-3"><div class="lasttask btn alert-danger btn-block" style="font-size: 14px; white-space: nowrap;">Debugowanie</div></div>
+						<div class="justify-content-md-center row"><button type="button" class="btn btn-primary userprofile btn-block" style="font-size: 14px;">Przejdź do profilu</button></div>
 					</div>
 				</div>
 			</div>
@@ -33,8 +33,8 @@
 				<div class="row justify-content-md-center">
 					<div class="col-6">
 						<div class="justify-content-md-center row mt-md-3 mb-md-3"><img class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
-						<div class="justify-content-md-center row mb-md-3"><div class="lasttask btn alert-danger btn-block">Debugowanie</div></div>
-						<div class="justify-content-md-center row"><button type="button" class="btn btn-primary userprofile btn-block">Przejdź do profilu</button></div>
+						<div class="justify-content-md-center row mb-md-3"><div class="lasttask btn alert-danger btn-block" style="font-size: 14px; white-space: nowrap;">Debugowanie</div></div>
+						<div class="justify-content-md-center row"><button type="button" class="btn btn-primary userprofile btn-block" style="font-size: 14px;">Przejdź do profilu</button></div>
 					</div>
 				</div>
 			</div>
@@ -47,8 +47,8 @@
 				<div class="row justify-content-md-center">
 					<div class="col-6">
 						<div class="justify-content-md-center row mt-md-3 mb-md-3"><img class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
-						<div class="justify-content-md-center row mb-md-3"><div class="lasttask btn alert-danger btn-block">Debugowanie</div></div>
-						<div class="justify-content-md-center row"><button type="button" class="btn btn-primary userprofile btn-block">Przejdź do profilu</button></div>
+						<div class="justify-content-md-center row mb-md-3"><div class="lasttask btn alert-danger btn-block" style="font-size: 14px; white-space: nowrap;">Debugowanie</div></div>
+						<div class="justify-content-md-center row"><button type="button" class="btn btn-primary userprofile btn-block" style="font-size: 14px;">Przejdź do profilu</button></div>
 					</div>
 				</div>
 			</div>
