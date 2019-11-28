@@ -14,7 +14,16 @@ $(document).ready(function(){
 								var Password = $('#Password').val();
 								var RPassword = $('#RPassword').val();
 								var what = this.id;
-								$('#error').load("additionalPHP/pdataedition.php",{Password: Password, RPassword: RPassword, what: what, profile: profile});
+								$('#error').load("additionalPHP/pdataeditionpswd.php",{Password: Password, RPassword: RPassword, what: what, profile: profile});
+							});
+							$('#pdata').click(function(event){
+								event.preventDefault();
+								var name = $('#Name').val();
+								var surname = $('#Surname').val();
+								var email = $('#Email').val();
+								var phone = $('#Phone').val();
+								var what = this.id;
+								$('#error').load("additionalPHP/pdataedition.php",{name: name, surname: surname, email: email, phone: phone, what: what, profile: profile});
 							});
 						});
 					});

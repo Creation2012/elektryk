@@ -25,7 +25,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Numer telefonu:</label>
-						<input type="text" class="form-control" id="Phone" placeholder="Wprowadź swój numer telefonu">
+						<input type="text" class="form-control" id="Phone" placeholder="Wprowadź nr telefonu: *********">
 					</div>
 					<input type="submit" id="pdata" class="btn btn-primary mb-2" value="Zmień dane">
 				</form>
@@ -64,7 +64,7 @@
 					<div class="col-lg-6" style="margin-left: 41.3%;">
 						<div class="row mt-md-3 mb-md-3"><img id="photo" class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
 					</div>
-					<input type="file" style="display: none;">
+					<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="display: none;">
 					<div class="row justify-content-md-center">
 						<input type="submit" id="pphoto" class="btn btn-primary mb-2" value="Zmień zdjęcie">
 					</div>
