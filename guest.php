@@ -16,10 +16,20 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <style>
-body{
-	padding-top: 10%;
-}
 
+body{
+	background-color: #f8f9fc;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox */
+    box-sizing: border-box;
+}
+#wrapper{
+	padding-top: 0%;
+}
+.nav-link{
+	font-size: 30px;
+	
+}
 a{
 	text-decoration: none !important;	
 }
@@ -36,7 +46,6 @@ a{
 }
 
 .container-fluid{
-	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 0 15%;
@@ -62,6 +71,25 @@ h1{
 	margin: auto;
 	margin-top: 5%;
 }
+.navbar-c{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	padding: 0px 15%;
+	z-index: 9999;
+	border-radious: 30px;
+}
+.v-middle{
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.navbar{
+	border-radius: 50px;
+}
 
 </style>
 </head>
@@ -69,9 +97,11 @@ h1{
 <body id="page-top">
 
 <!-- Topbar -->
+<div class="container-fluid navbar-c bg-gradient-primary">
+<div class="v-middle bg-gradient-primary">
 	<nav class="navbar navbar-expand-lg fixed-top bg-gradient-primary shadow">
-
-  <a class="navbar-brand" href="guest.php"><img height="92px" width="150px" src="img/logo.png"> </a>
+	
+  <a class="navbar-brand" href="guest.php"> <img height="92px" width="150px" src="img/logo.png"> </a>
 	<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -89,6 +119,8 @@ h1{
     </ul>
   </div>
 </nav>
+</div>
+</div>
 
         <!-- End of Topbar -->
 
@@ -103,8 +135,8 @@ h1{
         <!-- Begin Page Content -->
         <div class="container-fluid" id="main-content">
 		<div class="text-area">
-			<h1 class="h4 text-gray-900 mb-4"> Łatwe zarządzanie projektami dla każdego </h1>
-			<h1 class="h4 text-gray-900 mb-4"> Quartack </h1>
+			<h1 class="h1 text-gray-900 mb-4"> Łatwe zarządzanie projektami dla każdego </h1>
+			<h1 class="h1 text-gray-900 mb-4"> Quartack </h1>
 			<div class="text">
 			darmowy serwer zarządzania projektami wpełni za darmo <a href="mamuski.html" title="MUSISZ ZOBACZYĆ">[ZOBACZ JAK] </a>
 			<p>
@@ -179,6 +211,16 @@ Etiam blandit quis dolor et feugiat. Nunc eget arcu eget diam aliquet pharetra. 
   
   <!-- Custom javascript script-->
   <script src="js/mainsite.js"></script>
+  
+  <script>
+  $(document).ready(function() {
+    $('#wrapper').css('padding-top', ($('.navbar').height()));
+});
+
+	$(window).resize(function() {
+    $('#wrapper').css('padding-top', ($('.navbar').height()));
+});
+  </script>
 
 </body>
 
