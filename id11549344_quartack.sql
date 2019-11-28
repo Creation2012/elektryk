@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Czas generowania: 27 Lis 2019, 12:29
--- Wersja serwera: 10.3.16-MariaDB
--- Wersja PHP: 7.3.10
+-- Host: 127.0.0.1
+-- Czas generowania: 27 Lis 2019, 20:16
+-- Wersja serwera: 10.4.6-MariaDB
+-- Wersja PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `id11549344_quartack`
 --
-CREATE DATABASE IF NOT EXISTS `id11549344_quartack` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `id11549344_quartack`;
 
 -- --------------------------------------------------------
 
@@ -30,12 +28,32 @@ USE `id11549344_quartack`;
 -- Struktura tabeli dla tabeli `category`
 --
 
-DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `category_id` int(11) UNSIGNED NOT NULL,
   `category_name` varchar(60) NOT NULL DEFAULT '',
   `category_description` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`, `category_description`) VALUES
+(1, 'Grafika', '3d, rastrowa, wektorowa'),
+(2, 'Strony internetowe', 'php, js, jquery i inne'),
+(3, 'Aplikacje', 'wszystko');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `chat`
+--
+
+CREATE TABLE `chat` (
+  `id_nadawca` int(11) DEFAULT NULL,
+  `id_odbiorca` int(11) DEFAULT NULL,
+  `send_time` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -43,12 +61,20 @@ CREATE TABLE `category` (
 -- Struktura tabeli dla tabeli `etat`
 --
 
-DROP TABLE IF EXISTS `etat`;
 CREATE TABLE `etat` (
   `etat_id` int(11) UNSIGNED NOT NULL,
   `etat_name` varchar(60) NOT NULL DEFAULT '',
   `etat_podst` decimal(7,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `etat`
+--
+
+INSERT INTO `etat` (`etat_id`, `etat_name`, `etat_podst`) VALUES
+(1, 'Grafik', '1000.00'),
+(2, 'Programista', '2000.00'),
+(3, 'Administrator baz danych', '1500.00');
 
 -- --------------------------------------------------------
 
@@ -56,24 +82,43 @@ CREATE TABLE `etat` (
 -- Struktura tabeli dla tabeli `project`
 --
 
-DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project` (
   `project_id` int(11) UNSIGNED NOT NULL,
   `category_id` int(11) UNSIGNED NOT NULL,
   `project_income` decimal(7,2) NOT NULL DEFAULT 0.00,
   `project_name` varchar(80) NOT NULL DEFAULT '',
   `project_description` mediumtext DEFAULT '',
-  `project_start` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `project_end` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `project_start` datetime NOT NULL,
+  `project_end` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `project`
+--
+
+INSERT INTO `project` (`project_id`, `category_id`, `project_income`, `project_name`, `project_description`, `project_start`, `project_end`) VALUES
+(1, 1, '10000.00', '3D Model mojej waifu', 'prosze o staranne wykonanie', '2019-11-27 00:00:00', '0000-00-00 00:00:00'),
+(2, 1, '100.00', 'Rysunek smoka', 'poszukiwany jakub s', '2019-11-27 14:45:19', '0000-00-00 00:00:00'),
+(3, 2, '99999.99', 'Panel Projektow', 'potrzebny na tokaja, bo nie mamy czasu robic', '2019-11-27 14:45:19', '0000-00-00 00:00:00'),
+(4, 2, '10000.00', 'andrzej-nowak.cba.pl', 'remaster legenradnej strony', '2019-11-27 14:45:19', '0000-00-00 00:00:00'),
+(5, 3, '99999.00', 'Gierka PACMAN', 'w VR', '2019-11-27 14:45:19', '0000-00-00 00:00:00'),
+(6, 3, '50000.00', 'Trash-world', 'najbliższy śmietnik w twojej okolicy', '2019-11-27 14:45:19', '0000-00-00 00:00:00'),
+(7, 1, '2500.00', 'Teeworlds', 'skiny do teeworlds, na gotowej templatce', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(8, 2, '15000.00', 'strona dla dorosłych', 'więcej informacji na email mateusz.jasinski@o2.pl', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(9, 3, '10000.00', 'Kuni (Original Series)', 'novelka', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(10, 3, '5300.00', 'Aplikacja dla Komputronika', 'aplikacja napisana a javie do zliczania towaru', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(11, 1, '1000.00', 'Obraz kunieczki (pixelart)', 'obraz wykonany metodą pixelart', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(12, 2, '6000.00', 'Broń drzewcowa', 'broń drzewna', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(13, 1, '7000.00', 'Asset Poleaxe 3D', 'replika 1:1', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(14, 2, '9995.00', 'Strona fanowska Realu Madryt', 'que?', '2019-11-27 18:09:26', '0000-00-00 00:00:00'),
+(15, 3, '5000.00', 'AOTR: updater', 'bo nikt nie umie', '2019-11-27 18:09:26', '0000-00-00 00:00:00');
 
 --
 -- Wyzwalacze `project`
 --
-DROP TRIGGER IF EXISTS `project_start`;
 DELIMITER $$
 CREATE TRIGGER `project_start` BEFORE INSERT ON `project` FOR EACH ROW BEGIN
-	SET NEW.project_start = CURRENT_DATE();
+	SET NEW.project_start = NOW();
 END
 $$
 DELIMITER ;
@@ -84,7 +129,6 @@ DELIMITER ;
 -- Struktura tabeli dla tabeli `project_handler`
 --
 
-DROP TABLE IF EXISTS `project_handler`;
 CREATE TABLE `project_handler` (
   `project_id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED DEFAULT NULL,
@@ -99,7 +143,6 @@ CREATE TABLE `project_handler` (
 -- Struktura tabeli dla tabeli `task`
 --
 
-DROP TABLE IF EXISTS `task`;
 CREATE TABLE `task` (
   `task_id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
@@ -113,7 +156,6 @@ CREATE TABLE `task` (
 --
 -- Wyzwalacze `task`
 --
-DROP TRIGGER IF EXISTS `task_start`;
 DELIMITER $$
 CREATE TRIGGER `task_start` BEFORE INSERT ON `task` FOR EACH ROW BEGIN
 	SET NEW.task_start = NOW();
@@ -127,7 +169,6 @@ DELIMITER ;
 -- Struktura tabeli dla tabeli `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) UNSIGNED NOT NULL,
   `user_verifyEmail` tinyint(1) NOT NULL DEFAULT 0,
@@ -137,24 +178,29 @@ CREATE TABLE `user` (
   `user_lastname` varchar(45) NOT NULL DEFAULT '',
   `user_email` varchar(80) NOT NULL DEFAULT '',
   `user_password` varchar(40) NOT NULL DEFAULT '',
-  `user_hash` varchar(255) NOT NULL DEFAULT '',
+  `user_hash` varchar(80) DEFAULT '',
   `user_phone` varchar(25) DEFAULT NULL,
-  `user_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `user_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `user_path` varchar(255) DEFAULT NULL,
+  `user_created` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
+  `user_modified` datetime DEFAULT NULL,
   `etat_id` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Zrzut danych tabeli `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_verifyEmail`, `user_type`, `user_active`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_hash`, `user_phone`, `user_path`, `user_created`, `user_modified`, `etat_id`) VALUES
+(1, 1, 0, 1, 'Bartosz', 'Szkuta', 'bartosz@szkuta.pl', 'e0ff6fbc09d8295c5989fbf1118e3aee6797ab7e', '2a21bec96f1e2fdc2a3f8d37864892593c23b2ae', NULL, NULL, '2019-11-27 19:17:44', '2019-11-27 19:50:00', NULL),
+(2, 0, 0, 1, 'Arkadiusz', 'Bojtek', 'arek@bojtek.pl', '3a3d752aeed7d701ce658f8fe2095ba444097a24', '87b5e6ad19eeb54c2013223b2176a24a5c6b2c12', NULL, NULL, '2019-11-27 19:19:14', NULL, NULL);
+
+--
 -- Wyzwalacze `user`
 --
-DROP TRIGGER IF EXISTS `user_created`;
 DELIMITER $$
-CREATE TRIGGER `user_created` BEFORE INSERT ON `user` FOR EACH ROW BEGIN
-	SET NEW.user_created = NOW();
-END
+CREATE TRIGGER `user_created` BEFORE INSERT ON `user` FOR EACH ROW SET NEW.user_created = NOW()
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `user_id_autoincrement`;
 DELIMITER $$
 CREATE TRIGGER `user_id_autoincrement` BEFORE INSERT ON `user` FOR EACH ROW BEGIN
 DECLARE x INT;
@@ -167,7 +213,6 @@ SET x = (SELECT user_id FROM user ORDER BY user_id DESC LIMIT 1);
 END
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `user_modified`;
 DELIMITER $$
 CREATE TRIGGER `user_modified` BEFORE UPDATE ON `user` FOR EACH ROW SET NEW.user_modified = NOW()
 $$
@@ -225,19 +270,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `etat`
 --
 ALTER TABLE `etat`
-  MODIFY `etat_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `etat_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `project`
 --
 ALTER TABLE `project`
-  MODIFY `project_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `project_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT dla tabeli `task`
@@ -249,7 +294,7 @@ ALTER TABLE `task`
 -- AUTO_INCREMENT dla tabeli `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ograniczenia dla zrzutów tabel
