@@ -10996,3 +10996,8 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.MyLabel {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
