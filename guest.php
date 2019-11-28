@@ -16,91 +16,124 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <style>
-.c-white{ 
-	color: white;
-}
-.c-white:hover{
-	color: black;
+body{
+	padding-top: 10%;
 }
 
 a{
-	text-decoration: none !important;
+	text-decoration: none !important;	
 }
+.nav-item a:hover{
+	color: #d1d3e2!important;
+}
+
 .navbar-c{
 	padding: 0px 15%;
 }
 .navbar-c-links a{
+
 	margin-left: 30px;
 }
-.v-middle{
-	top: 30%;
-	display: block;
-	position: relative;
-}
+
 .container-fluid{
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 0 15%;
-	color: white;
 }
 #main-content{
 	padding: 5%;
 	text-align: center;
+	display: flex;
+	float: left;
 }
 h1{
 	font-family: 'Muli', sans-serif;
 	font-size: 2em;
 	font-weight: 500;
 }
+.nav-link{
+	text-align: center;
+	color: white;
+	font-color: white;
+}
+.progress{
+	width: 25%;
+	margin: auto;
+	margin-top: 5%;
+}
+
 </style>
 </head>
 
 <body id="page-top">
 
+<!-- Topbar -->
+	<nav class="navbar navbar-expand-lg fixed-top bg-gradient-primary shadow">
+
+  <a class="navbar-brand" href="guest.php"><img height="92px" width="150px" src="img/logo.png"> </a>
+	<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="guest.php">Główna</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Oferta</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Kontakt</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+        <!-- End of Topbar -->
+
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column sidebar-dark bg-gradient-primary">
+    <div id="content-wrapper" class="d-flex flex-column sidebar-dark">
 
       <!-- Main Content -->
       <div id="content">
 	
-        <!-- Topbar -->
-    <div class="container-fluid navbar-c " >
-	<div class="v-middle">
-		<div class="row">
-			<div class="col-lg-2">
-				<a href="guest.php">
-					<div class="navbar-c-logo">
-						<img height=91px width=150px src="img/logo.png" class="v-image">
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-8">
-				<div class="navbar-c-links text-right v-middle">
-					<a href="#home" class="text c-white">Strona główna</a>
-					<a href="#oferta" class="text c-white">Oferta</a>
-					<a href="#kontakt" class="text c-white">Kontakt</a>
-					<a href="login.html" class="text c-white">Zaloguj się</a>
-				</div>
-			</div>
-			<div class="col-lg-2">
-				
-			</div>
-		</div>
-	</div>
-</div>
-        <!-- End of Topbar -->
-<hr>
         <!-- Begin Page Content -->
         <div class="container-fluid" id="main-content">
-			<h1> Łatwe zarządzanie projektami dla każdego </h1>
-			<h1> Quartack </h1>
+		<div class="text-area">
+			<h1 class="h4 text-gray-900 mb-4"> Łatwe zarządzanie projektami dla każdego </h1>
+			<h1 class="h4 text-gray-900 mb-4"> Quartack </h1>
 			<div class="text">
 			darmowy serwer zarządzania projektami wpełni za darmo <a href="mamuski.html" title="MUSISZ ZOBACZYĆ">[ZOBACZ JAK] </a>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus elit, dignissim in dui nec, dignissim tristique nulla. Maecenas dapibus lacus a tellus pharetra molestie. Fusce sit amet felis gravida, congue risus vel, faucibus nunc. Etiam imperdiet neque in nunc consequat laoreet. Quisque a finibus velit. Aenean a ornare purus, sagittis rutrum sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc vel elit id dui rhoncus posuere bibendum sed quam. Ut vitae turpis eu elit eleifend luctus. Vivamus nulla ipsum, efficitur sit amet massa non, maximus mollis tellus. Donec venenatis, neque id faucibus porttitor, mi odio feugiat ligula, accumsan euismod metus odio sit amet enim. Mauris congue felis id interdum mattis. Cras pretium pellentesque elit et convallis. Donec non sodales sem. Donec molestie lobortis eros, eu bibendum lectus mollis a.
+
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin dictum quam vel nisl suscipit interdum. Fusce lacinia a massa vel lacinia. In volutpat id elit eu egestas. Vivamus cursus at erat at pulvinar. Ut vitae nunc elit. Etiam dui quam, semper et justo id, pellentesque elementum purus. Nullam sit amet commodo tortor. Duis justo massa, pretium ut velit eget, pretium facilisis ante. Vivamus rutrum, orci ac elementum consectetur, urna elit auctor lectus, in tincidunt lacus eros et mauris. Fusce condimentum lectus quis tellus ullamcorper, id scelerisque ex auctor. Quisque efficitur bibendum tristique. Phasellus rutrum magna a ante pretium, sit amet cursus enim rutrum. Curabitur sed eros placerat, hendrerit eros eleifend, aliquet enim.
+
+Sed quam urna, pretium in augue ut, sagittis vehicula leo. Quisque lacinia sapien urna, et varius odio sagittis vehicula. Donec dapibus dolor eu tempor hendrerit. Ut posuere ex ligula, nec pulvinar sapien condimentum eget. Maecenas suscipit nunc ut eleifend mattis. Vestibulum dapibus sem id nisi congue molestie non ac magna. Integer commodo augue eget rutrum ullamcorper. Curabitur cursus nisi justo, eget ornare lectus scelerisque et. Suspendisse tincidunt arcu facilisis, accumsan purus vitae, ultricies ligula.
+
+Suspendisse non turpis non quam auctor rutrum. Pellentesque faucibus nunc nibh, ut tristique ante ultrices sed. Donec nisl tellus, ultrices at luctus quis, commodo blandit arcu. Maecenas non enim sed nisl facilisis venenatis. Cras vitae convallis magna. Donec lobortis massa id iaculis pulvinar. Nunc ultricies urna eget imperdiet consequat. Nullam rutrum sollicitudin aliquet. Integer hendrerit justo risus, vel sagittis nisl ullamcorper in. Curabitur placerat, enim vitae luctus tincidunt, elit quam rutrum nulla, vitae blandit arcu justo a sapien. Aliquam luctus tempor arcu sit amet mollis. Vestibulum felis turpis, semper et nibh sed, aliquet iaculis ex. Vivamus ex lorem, vestibulum sed laoreet nec, bibendum ac nunc. Donec varius vestibulum augue, ut tincidunt orci elementum eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque sed purus a arcu lacinia fringilla vulputate nec quam.
+
+Curabitur non lacus vel justo pellentesque laoreet. Pellentesque at neque arcu. Etiam vel velit est. Nunc sagittis faucibus lobortis. Nunc fringilla, sapien sed posuere posuere, mi dolor ornare diam, quis laoreet purus magna ut dolor. Nunc mi nulla, convallis ac est nec, pellentesque hendrerit eros. Donec ut cursus leo. Morbi est massa, sollicitudin non aliquam a, pharetra quis ante. Nunc non mauris id mi vehicula luctus. Pellentesque varius nulla vel lacinia varius. Maecenas lobortis ante non efficitur convallis.
+
+Curabitur congue semper consectetur. Cras id fringilla nisi. Suspendisse nec orci mi. Aliquam quis mattis nulla. Curabitur a iaculis erat, et facilisis neque. Mauris tristique hendrerit justo sed porta. Phasellus pretium odio sit amet augue ullamcorper, at commodo dolor varius. Cras velit lectus, dictum eget erat nec, egestas tempus dolor. Etiam pellentesque convallis magna eget rutrum. Mauris aliquet arcu eu libero tristique, at pulvinar arcu iaculis.
+
+Proin a lacinia massa. Nulla tortor ipsum, facilisis eget suscipit ac, porta ut sapien. Ut eleifend condimentum malesuada. Nullam at tincidunt turpis. In hac habitasse platea dictumst. Integer sagittis tempor lacinia. Sed sit amet urna auctor, aliquet erat sed, venenatis quam. Maecenas blandit ullamcorper ligula, auctor hendrerit dui ultricies quis. Fusce ligula felis, blandit a dui vel, ullamcorper sagittis arcu. Donec eu magna sed nisi ultricies lacinia. Ut vulputate non leo at egestas. Nunc euismod fringilla libero vitae pulvinar.
+
+Phasellus molestie mollis gravida. Sed in faucibus diam, et sagittis odio. Proin ut aliquam elit. Donec in quam odio. Donec non euismod turpis. Suspendisse in egestas risus. Etiam metus enim, accumsan id gravida quis, molestie ornare lorem. Morbi placerat metus vel lobortis pharetra. Aliquam condimentum lectus nunc, convallis pulvinar massa facilisis id. Nullam ut varius enim. Aliquam leo orci, pulvinar quis nisl a, dapibus mattis felis. Quisque luctus augue eu metus aliquet, vel convallis velit rutrum. Vestibulum erat quam, gravida ut pellentesque at, varius vel sem. In sit amet tempor diam, ac varius purus.
+
+Morbi vitae cursus diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam accumsan, enim ac eleifend tempor, nibh leo viverra elit, sit amet pharetra ex tortor id metus. Ut suscipit dui non feugiat mollis. Pellentesque in erat ac tellus sollicitudin varius. Proin eget nulla at eros accumsan iaculis. Etiam convallis nec arcu gravida volutpat. Nullam sodales est felis, ac varius nisl tincidunt ut. Phasellus sodales, mauris eget vulputate facilisis, sapien erat condimentum nulla, euismod imperdiet diam nunc ornare mi. Aenean ac malesuada ligula, ac maximus tellus. Aenean sit amet mattis neque, nec ultrices massa.
+
+Etiam blandit quis dolor et feugiat. Nunc eget arcu eget diam aliquet pharetra. Sed ipsum lectus, pellentesque in vulputate sit amet, gravida ut quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla non nibh quis erat tincidunt consectetur vel nec purus. Vestibulum tincidunt ligula id ligula ullamcorper commodo. Aliquam et tellus et ligula facilisis efficitur sit amet ac justo.
+			
 			</div>
         </div>
+		<div class="progress">
+			<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+		</div>
         <!-- /.container-fluid -->
 
       </div>
