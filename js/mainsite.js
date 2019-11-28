@@ -9,16 +9,12 @@ $(document).ready(function(){
 							$('#photo').click(function(){
 								$('input:file')[0].click();
 							});
-							$('#passwordnew').click(function(){
-								alert("Cos");
-								$(this).preventDefault();
-								$('#Password #RPassword').removeClass('border-danger');
-								if($('#Password').val()==""){
-									$('#Password').addClass('border-danger'); 
-								}
-								if($('#RPassword').val()==""){
-									$('#RPassword').addClass('border-danger'); 
-								}
+							$('#passwordnew').click(function(event){
+								event.preventDefault();
+								var Password = $('#Password').val();
+								var RPassword = $('#RPassword').val();
+								var what = this.id;
+								$('#error').load("additionalPHP/pdataedition.php",{Password: Password, RPassword: RPassword, what: what, profile: profile});
 							});
 						});
 					});

@@ -40,11 +40,11 @@
 				<form class="col-lg-12">
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Nowe hasło:</label>
-						<input type="text" class="form-control" id="Password" placeholder="Hasło">
+						<input type="password" class="form-control" id="Password" placeholder="Hasło">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Powtórz hasło:</label>
-						<input type="text" class="form-control" id="RPassword" placeholder="Powtórz hasło">
+						<input type="password" class="form-control" id="RPassword" placeholder="Powtórz hasło">
 					</div>
 					<input type="submit" id="passwordnew" class="btn btn-primary mb-2" value="Zmień hasło">
 				</form>
@@ -66,10 +66,14 @@
 					</div>
 					<input type="file" style="display: none;">
 					<div class="row justify-content-md-center">
-						<input type="submit" id="pphoto" class="btn btn-primary mb-2" value="Zmień dane">
+						<input type="submit" id="pphoto" class="btn btn-primary mb-2" value="Zmień zdjęcie">
 					</div>
 				</form>
 			</div>
 		</div>
+	</div>
+</div>
+<div class="row justify-content-md-center">
+	<div id="error" style="color: red;">
 	</div>
 </div>
