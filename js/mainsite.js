@@ -9,6 +9,16 @@ $(document).ready(function(){
 							$('#photo').click(function(){
 								$('input:file')[0].click();
 							});
+							$('#pphoto').click(function(event){
+								event.preventDefault();
+								if($('#avatar').val()==""){
+									alert("Wybierz plik do wysłania");
+								}
+								else{
+									var avatar = $('#avatar').val();
+									$('#error').load("additionalPHP/pavatar.php",{avatar: avatar, profile: profile});
+								}
+							});
 							$('#passwordnew').click(function(event){
 								event.preventDefault();
 								var Password = $('#Password').val();
