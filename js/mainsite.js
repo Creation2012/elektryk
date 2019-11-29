@@ -11,13 +11,18 @@ $(document).ready(function(){
 							});
 							$('#pphoto').click(function(event){
 								event.preventDefault();
-								if($('#avatar').val()==""){
-									alert("Wybierz plik do wysłania");
-								}
-								else{
-									var avatar = $('#avatar').val();
-									$('#error').load("additionalPHP/pavatar.php",{avatar: avatar, profile: profile});
-								}
+								var file_data = $('#avatar').prop('files')[0];   
+								var form_data = new FormData();                  
+								form_data.append('file', file_data);
+								$.ajax({
+									url: 'additionalPHP/pavatar.php',
+									dataType: 'text',
+									cache: false,
+									contentType: false,
+									processData: false,
+									data: form_data,                         
+									type: 'POST'
+								 });
 							});
 							$('#passwordnew').click(function(event){
 								event.preventDefault();
