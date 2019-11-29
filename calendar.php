@@ -16,8 +16,9 @@
 	
   </head>
   <body>
-
+	<div class="container-fluid">
     <div id='calendar'></div>
+	</div>
 	
  <script>
 
@@ -25,7 +26,10 @@
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
-			plugins: [ 'dayGrid' ]
+			plugins: [ 'dayGrid' ],
+			lang: 'pl',
+			editable: true,
+			events: 'load.php'
         });
 		
         calendar.render();

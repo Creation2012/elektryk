@@ -79,16 +79,17 @@ h1{
 	width: 100%;
 	padding: 0px 15%;
 	z-index: 9999;
-	border-radious: 30px;
 }
 .v-middle{
 	display: block;
 	position: relative;
 	top: 50%;
-	transform: translateY(-50%);
 }
-.navbar{
-	border-radius: 50px;
+ul{
+	width: 100%;
+}
+#navbarCollapse{
+	margin: auto;
 }
 
 </style>
@@ -99,7 +100,7 @@ h1{
 <!-- Topbar -->
 <div class="container-fluid navbar-c bg-gradient-primary">
 <div class="v-middle bg-gradient-primary">
-	<nav class="navbar navbar-expand-lg fixed-top bg-gradient-primary shadow">
+	<nav class="navbar navbar-expand-sm fixed-top bg-gradient-primary shadow">
 	
   <a class="navbar-brand" href="guest.php"> <img height="92px" width="150px" src="img/logo.png"> </a>
 	<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,6 +116,9 @@ h1{
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Kontakt</a>
+      </li>
+	   <li class="nav-item">
+        <a class="nav-link" href="login.html">Zaloguj</a>
       </li>
     </ul>
   </div>
