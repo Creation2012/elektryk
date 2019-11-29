@@ -60,12 +60,14 @@
 				<h6 class="m-0 font-weight-bold text-primary">Zdjęcie</h6>
 			</div>
 			<div class="card-body">
-				<form class="col-lg-12">
-					<div class="col-lg-6" style="margin-left: 41.3%;">
-						<div class="row mt-md-3 mb-md-3"><img id="photo" class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
+				<form class="col-lg-12" method="POST" enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-3"></div>
+							<div class="col-6" style="text-align: center;"><img id="photo" class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
+						<div class="col-3"></div>
 					</div>
-					<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="display: none;">
-					<div class="row justify-content-md-center">
+					<input type="file" id="avatar" name="avatar" accept="image/*" style="display: none;">
+					<div class="row justify-content-center">
 						<input type="submit" id="pphoto" class="btn btn-primary mb-2" value="Zmień zdjęcie">
 					</div>
 				</form>
