@@ -1,12 +1,4 @@
 $(document).ready(function(){
-	
-	function refreshImage(imgElement, imgURL){
-       var timestamp = new Date().getTime();
-	   var el = document.getElementById(imgElement);
-	   var queryString = "?t=" + timestamp;
-	   el.src = imgURL + queryString;    
-	}
-	
 	$('#profiles').click(function(){
 		$('#main-content').load("additionalPHP/profile.php",function(){
 			$('.userprofile').click(function(){
@@ -76,11 +68,6 @@ $(document).ready(function(){
 					});
 				});
 			});
-		});
-	});
-	$('#cal').click(function(){
-		$('#main-content').load("calendar.php",function(){
-			
 		});
 	});
 });
