@@ -100,7 +100,7 @@ ul{
 <!-- Topbar -->
 <div class="container-fluid navbar-c bg-gradient-primary">
 <div class="v-middle bg-gradient-primary">
-	<nav class="navbar navbar-expand-sm fixed-top bg-gradient-primary shadow">
+	<nav class="navbar navbar-expand-md fixed-top bg-gradient-primary shadow">
 	
   <a class="navbar-brand" href="guest.php"> <img height="92px" width="150px" src="img/logo.png"> </a>
 	<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

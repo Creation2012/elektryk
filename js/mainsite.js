@@ -46,4 +46,9 @@ $(document).ready(function(){
 			});
 		});
 	});
+	$('#cal').click(function(){
+		$('#main-content').load("calendar.php",function(){
+			
+		});
+	});
 });
