@@ -8,14 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <title>QUARTACK</title>
 <?php 
 	session_start();
 	if(isset($_SESSION['login'])){
-		echo "<title>".$_SESSION['login']."</title>";
+		
 	}
 	else{
 		//header("Location: https://quartak.000webhostapp.com/login.html?error=1");
-		echo "<title>Nie jesteś zalogowany</title>";
+		header("Location: mamuski.html");
 	}
 	
 ?>
@@ -145,7 +146,7 @@
       </div>
 	        <!-- Nav Item - Profiles -->
       <li class="nav-item">
-        <a class="nav-link" id="profiles">
+        <a class="nav-link MyHand" id="profiles">
           <i class="fas fa-fw fa-table"></i>
           <span>Profile użytkowników</span></a>
       </li>

@@ -1,6 +1,5 @@
 <?php
 	include "connect.php";
-	$_POST['profile'];
 ?>
 <!-- Profiles Site DIV-->
 <div class="row">
@@ -101,8 +100,14 @@
 	</div>
 </div>
 <div class="row justify-content-center">
-	<div id="personaldata" class="btn btn-primary btn-icon-split" value="<?php echo $_POST['profile'];?>">
-		<span class="icon text-white-50"><i class="fas fa-check"></i></span>
-		<span class="text">Edytuj dane swojego konta</span>
-	</div>
+	<?php
+		$profile = $_POST['profile'];
+		session_start();
+		if($_SESSION['login']==$profile){
+			echo ('<div id="personaldata" class="btn btn-primary btn-icon-split MyHand" value="'.$_POST['profile'].'">
+					<span class="icon text-white-50"><i class="fas fa-check"></i></span>
+					<span class="text">Edytuj dane swojego konta</span>
+				</div>');
+		}
+	?>
 </div>

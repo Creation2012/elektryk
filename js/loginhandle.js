@@ -13,19 +13,35 @@ $(document).ready(function(){
 			}
 		}; 
 	
-	if(isset(getUrlParameter('error'))&&getUrlParameter==1){
+	if(getUrlParameter('error')==1){
 			$('#Email').addClass("border-danger");
 			$('#Password').addClass("border-danger");
+			$('#error').load("Podałeś błędne dane!");
 		}
-	
+		
 	$('#log').click(function(event){
 		event.preventDefault();
 		if($('#Email').val()==""||$('#Password').val()==""){
-			$('#Email').addClass("border-danger");
-			$('#Password').addClass("border-danger");
+			$('#Email, #Password').addClass("border-danger");
 		}
 		else{
-			$('form').submit();
+			var email = $('#Email').val();
+			var password = $('#Password').val();
+			$('#gif').show();
+			$('#Email, #Password').removeClass("border-danger");
+			$.ajax({
+			url : "login.php",
+			type: "POST",
+			data : {email: email, password: password},
+			success: function(response) {
+				if(response=="1"){
+					window.location = "index.php";
+				}else{
+					$('#gif').hide();
+					$('#Email, #Password').addClass("border-danger");
+				}				
+			}
+			});
 		}
 	});	
 });
