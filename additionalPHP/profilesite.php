@@ -1,11 +1,18 @@
 <?php
+	$id = $_POST['profile'];
 	include "connect.php";
+	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone FROM user WHERE user_id = '.$id.';');
+	$row = $stmt -> fetch();
 ?>
 <!-- Profiles Site DIV-->
 <div class="row">
 	<div class="col-lg-6 col-sm-12">
 		<div class="justify-content-center row mt-md-3 mb-md-3">
-			<img class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100">
+			<?php 
+				$path = "../img/avatar/".$id.".jpg";
+				echo '<img class="border border-grey rounded-circle" src="img/';
+				if(file_exists($path)){echo 'avatar/'.$id.'.jpg?='.filemtime($path).'"';}else{echo 'photo.png"';}echo ' alt="User" height="100" width="100">';
+			?>
 		</div>
 	</div>
 	<div class="col-lg-1 col-sm-0">
@@ -21,16 +28,16 @@
 				<div class="row no-gutters align-items-center">
 					<div class="col mr-2">
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-						Imię:
+						Imię
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-						Jan
+						<?php if($row['user_firstname']!=""){echo $row['user_firstname'];}else{echo "Brak Danych";}?>
 						</div>
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 						Nazwisko:
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-						Kowalski
+						<?php if($row['user_lastname']!=""){echo $row['user_lastname'];}else{echo "Brak Danych";}?>
 						</div>
 					</div>
 					<div class="col-auto">
@@ -47,13 +54,13 @@
 						Email:
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-						janeczek@jans.com
+						<?php if($row['user_email']!=""){echo $row['user_email'];}else{echo "Brak Danych";}?>
 						</div>
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 						Numer telefonu:
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-						124523734
+						<?php if($row['user_phone']!=""){echo $row['user_phone'];}else{echo "Brak Danych";}?>
 						</div>
 					</div>
 					<div class="col-auto">
@@ -70,13 +77,13 @@
 						Etat:
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-						Tester
+						//Ta czesc jest do zmiany kiedy dostaniesz nowy skrypt bazy danych
 						</div>
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 						Ostatni projekt:
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-						produkcja tego pierdolonego gówna
+						//Ta czesc jest do zmiany kiedy dostaniesz nowy skrypt bazy danych
 						</div>
 					</div>
 					<div class="col-auto">
