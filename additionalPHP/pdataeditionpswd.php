@@ -54,9 +54,15 @@
 		':id'=>$_POST['profile'],
 		]);
 		$stmt -> closeCursor();
+		echo 1;
 		}
 		catch(Exception $e){
 			echo 0;
 		}
 	}?>";
+	if(start){
+		$('#Password, #RPassword').removeClass("border-danger border-warning");
+		document.getElementById("ppasswordform").reset();
+		alert("Hasło zostało zmienione!");
+	}
 </script>

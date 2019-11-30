@@ -46,6 +46,8 @@
 			echo 'Wystąpił wyjątek nr '.$e->getCode().', jego komunikat to:'.$e->getMessage();
 		}
 		}?>";
-		if(start!=""){alert(start);}
-	
+	if(start!=""){
+		document.getElementById("pdataform").reset();
+		alert(start);
+	}
 </script>

@@ -1,5 +1,8 @@
 <?php
 	include "connect.php";
+	session_start();
+	$id = $_SESSION['login'];
+	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone FROM user WHERE id = '.$id.';');
 ?>
 <!-- Change data form DIV-->
 <div class="row">
@@ -10,7 +13,7 @@
 				<h6 class="m-0 font-weight-bold text-primary">Dane osobowe</h6>
 			</div>
 			<div class="card-body">
-				<form class="col-lg-12">
+				<form class="col-lg-12" id="pdataform">
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Imię:</label>
 						<input type="text" class="form-control" id="Name" placeholder="Wprowadź swoje imię / Nick">
@@ -37,7 +40,7 @@
 				<h6 class="m-0 font-weight-bold text-primary">Zmień hasło</h6>
 			</div>
 			<div class="card-body">
-				<form class="col-lg-12">
+				<form class="col-lg-12" id="ppasswordform">
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Nowe hasło:</label>
 						<input type="password" class="form-control" id="Password" placeholder="Hasło">
@@ -60,14 +63,19 @@
 				<h6 class="m-0 font-weight-bold text-primary">Zdjęcie</h6>
 			</div>
 			<div class="card-body">
-				<form class="col-lg-12" method="POST" enctype="multipart/form-data">
+				<form class="col-lg-12" method="POST" enctype="multipart/form-data" id="pavatarform">
 					<div class="row">
 						<div class="col-3"></div>
-							<div class="col-6" style="text-align: center;"><img id="photo" class="border border-grey rounded-circle" src="img/photo.png" alt="User" height="100" width="100"></div>
+							<?php
+							$path = "../img/avatar/".$id.".jpg";
+							echo '<div class="col-6" style="text-align: center;"><img id="photo" class="border border-grey rounded-circle MyHand" src="img/';
+							if(file_exists($path)){echo 'avatar/'.$id.'.jpg"';}else{echo 'photo.png"';}
+							echo ' alt="User" height="100" width="100"></div>';
+							?>
 						<div class="col-3"></div>
 					</div>
 					<input type="file" id="avatar" name="avatar" accept="image/*" style="display: none;">
-					<div class="row justify-content-center">
+					<div class="row justify-content-center MyLabel">
 						<input type="submit" id="pphoto" class="btn btn-primary mb-2" value="Zmień zdjęcie">
 					</div>
 				</form>
