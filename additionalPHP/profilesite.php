@@ -10,7 +10,7 @@
 	$row = $stmt -> fetch();
 ?>
 <!-- Profiles Site DIV-->
-<div class="row">
+<div class="row float-left" style="width: 100%;">
 	<div class="col-lg-6 col-sm-12">
 		<div class="justify-content-center row mt-md-3 mb-md-3">
 			<?php 
@@ -26,7 +26,7 @@
 		<div class="bg-gradient-primary text-white text-right" style="font-size: 50px; padding-right: 50px; letter-spacing: 5px;">QUARTACK</div>
 	</div>
 </div>
-<div class="row">
+<div class="row float-left" style="width: 100%;">
 	<div class="col-lg-6">
 		<div class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
 			<div class="card-body">
@@ -105,13 +105,18 @@
 			<div class="card-header py-3 justify-content-md-center row ml-md-1 mr-md-1 border-top">
 				  <h6 class="m-0 font-weight-bold text-primary">Czat tekstowy:</h6>
 			</div>
-			<div class="card-body" style="height: 430px;">
-				
+			<div class="card-body" style="min-height: 430px; height: 100%;">
+				<div class="card mb-4 py-3 border-left-primary float-left">
+					<div class="card-body">test</div>
+				</div>
+				<div class="float-right card mb-4 py-3 border-right-primary">
+					<div class="card-body">test</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center" style="width: 100%;">
 	<?php
 		if(isset($_POST['profile'])){
 		$profile = $_POST['profile'];}

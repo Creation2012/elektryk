@@ -27,13 +27,10 @@ $(document).ready(function(){
 										success: function(data){
 											errors = JSON.parse(data);
 											if(errors["0"]=="1"){
-												$('#photo').css('border', 'red');
 												alert("Tylko plik typu .jpg!");
-											}else if(errors["1"]=="1"){
-												$('#photo').css('border', 'red');
+											}else if(errors["1"]=="1"){;
 												alert("Wystąpił błąd podczas ładowania pliku!");
 											}else if(errors["2"]=="1"){
-												$('#photo').css('border', 'red');
 												alert("Za duży plik!!");
 											}else{
 												d = new Date();
@@ -44,7 +41,6 @@ $(document).ready(function(){
 										}
 									 });
 								}else{
-									$('#photo').css('border', 'red');
 									alert("Wybierz jakiś plik!");
 								}
 							});
@@ -72,6 +68,7 @@ $(document).ready(function(){
 	});
 	
 	$('#yoursite').click(function(){
+		var profile = $(this).attr('val');
 		$('#main-content').load("additionalPHP/profilesite.php",function(){
 			$('#personaldata').click(function(){
 				$('#main-content').load("additionalPHP/personalinfo.php",function(){
@@ -96,13 +93,10 @@ $(document).ready(function(){
 								success: function(data){
 									errors = JSON.parse(data);
 									if(errors["0"]=="1"){
-										$('#photo').css('border', 'red');
 										alert("Tylko plik typu .jpg!");
 									}else if(errors["1"]=="1"){
-										$('#photo').css('border', 'red');
 										alert("Wystąpił błąd podczas ładowania pliku!");
 									}else if(errors["2"]=="1"){
-										$('#photo').css('border', 'red');
 										alert("Za duży plik!!");
 									}else{
 										d = new Date();
@@ -113,7 +107,6 @@ $(document).ready(function(){
 								}
 							 });
 						}else{
-							$('#photo').css('border', 'red');
 							alert("Wybierz jakiś plik!");
 						}
 					});
@@ -139,6 +132,7 @@ $(document).ready(function(){
 	});
 	
 	$('#settings').click(function(){
+		var profile = $('#yoursite').attr('val');
 		$('#main-content').load("additionalPHP/personalinfo.php",function(){
 			$('#photo').click(function(){
 				$('input:file')[0].click();
@@ -161,13 +155,10 @@ $(document).ready(function(){
 						success: function(data){
 							errors = JSON.parse(data);
 							if(errors["0"]=="1"){
-								$('#photo').css('border', 'red');
 								alert("Tylko plik typu .jpg!");
 							}else if(errors["1"]=="1"){
-								$('#photo').css('border', 'red');
 								alert("Wystąpił błąd podczas ładowania pliku!");
 							}else if(errors["2"]=="1"){
-								$('#photo').css('border', 'red');
 								alert("Za duży plik!!");
 							}else{
 								d = new Date();
@@ -178,7 +169,6 @@ $(document).ready(function(){
 						}
 					 });
 				}else{
-					$('#photo').css('border', 'red');
 					alert("Wybierz jakiś plik!");
 				}
 			});
