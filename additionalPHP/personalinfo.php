@@ -2,7 +2,6 @@
 	include "connect.php";
 	session_start();
 	$id = $_SESSION['login'];
-	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone FROM user WHERE id = '.$id.';');
 ?>
 <!-- Change data form DIV-->
 <div class="row">

@@ -36,10 +36,12 @@
 	start = "<?php
 		if(($namev&&$surnamev&&$emailv&&$phonev)&&($name||$surname||$email||$phone)){
 		try {
-		if($namev&&$name){$stmt = $pdo -> prepare('UPDATE user SET user_firstname = :name WHERE user_id = :id;');$stmt -> execute([':name'=>$_POST['name'],':id'=>$_POST['profile'],]);}
-		if($surnamev&&$surname){$stmt = $pdo -> prepare('UPDATE user SET user_lastname = :surname WHERE user_id = :id;');$stmt -> execute([':surname'=>$_POST['surname'],':id'=>$_POST['profile'],]);}
-		if($emailv&&$email){$stmt = $pdo -> prepare('UPDATE user SET user_email = :email WHERE user_id = :id;');$stmt -> execute([':email'=>$_POST['email'],':id'=>$_POST['profile'],]);}
-		if($phonev&&$phone){$stmt = $pdo -> prepare('UPDATE user SET user_phone = :phone WHERE user_id = :id;');$stmt -> execute([':phone'=>$_POST['phone'],':id'=>$_POST['profile'],]);}
+		session_start();
+		$id = $_SESSION['login'];
+		if($namev&&$name){$stmt = $pdo -> prepare('UPDATE user SET user_firstname = :name WHERE user_id = :id;');$stmt -> execute([':name'=>$_POST['name'],':id'=>$id,]);}
+		if($surnamev&&$surname){$stmt = $pdo -> prepare('UPDATE user SET user_lastname = :surname WHERE user_id = :id;');$stmt -> execute([':surname'=>$_POST['surname'],':id'=>$id,]);}
+		if($emailv&&$email){$stmt = $pdo -> prepare('UPDATE user SET user_email = :email WHERE user_id = :id;');$stmt -> execute([':email'=>$_POST['email'],':id'=>$id,]);}
+		if($phonev&&$phone){$stmt = $pdo -> prepare('UPDATE user SET user_phone = :phone WHERE user_id = :id;');$stmt -> execute([':phone'=>$_POST['phone'],':id'=>$id,]);}
 		echo "Dokonano zmian!!!";
 		}
 		catch(Exception $e){
