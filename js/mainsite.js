@@ -34,7 +34,7 @@ $(document).ready(function(){
 												alert("Za duży plik!!");
 											}else{
 												d = new Date();
-												$('#photo').attr('src','img/avatar/'+profile+'.jpg?'+d.getTime());
+												$('#photo, #img-profilep').attr('src','img/avatar/'+profile+'.jpg?'+d.getTime());
 												alert("Udało się załadować nowe zdjęcie!");
 												document.getElementById('pavatarform').reset();
 											}
@@ -100,7 +100,7 @@ $(document).ready(function(){
 										alert("Za duży plik!!");
 									}else{
 										d = new Date();
-										$('#photo').attr('src','img/avatar/'+profile+'.jpg?'+d.getTime());
+										$('#photo, #img-profilep').attr('src','img/avatar/'+profile+'.jpg?'+d.getTime());
 										alert("Udało się załadować nowe zdjęcie!");
 										document.getElementById('pavatarform').reset();
 									}
@@ -162,7 +162,7 @@ $(document).ready(function(){
 								alert("Za duży plik!!");
 							}else{
 								d = new Date();
-								$('#photo').attr('src','img/avatar/'+profile+'.jpg?'+d.getTime());
+								$('#photo, #img-profilep').attr('src','img/avatar/'+profile+'.jpg?'+d.getTime());
 								alert("Udało się załadować nowe zdjęcie!");
 								document.getElementById('pavatarform').reset();
 							}

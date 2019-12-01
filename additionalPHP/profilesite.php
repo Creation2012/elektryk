@@ -1,13 +1,19 @@
 <?php
 	session_start();
+	$you = 0;
 	if(isset($_POST['profile'])){
 	$id = $_POST['profile'];
+		if($_POST['profile']==$_SESSION['login']){
+			$you = 1;
+		}
 	}else{
 		$id = $_SESSION['login'];
+		$you = 1;
 	}
 	include "connect.php";
 	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone FROM user WHERE user_id = '.$id.';');
 	$row = $stmt -> fetch();
+	$stmt -> closeCursor();
 ?>
 <!-- Profiles Site DIV-->
 <div class="row float-left" style="width: 100%;">
@@ -20,9 +26,7 @@
 			?>
 		</div>
 	</div>
-	<div class="col-lg-1 col-sm-0">
-	</div>
-	<div class="col-lg-5  col-sm-12">
+	<div class="col-lg-6  col-sm-12">
 		<div class="bg-gradient-primary text-white text-right" style="font-size: 50px; padding-right: 50px; letter-spacing: 5px;">QUARTACK</div>
 	</div>
 </div>
@@ -98,20 +102,35 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-1">
+	<div class="col-lg-2">
 	</div>
-	<div class="col-lg-5 col-sm-12">
-		<div class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
+	<div class="col-lg-4 col-sm-12">
+		<div <?php if($you){echo "style='display: none;' ";}?>class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
 			<div class="card-header py-3 justify-content-md-center row ml-md-1 mr-md-1 border-top">
 				  <h6 class="m-0 font-weight-bold text-primary">Czat tekstowy:</h6>
 			</div>
-			<div class="card-body" style="min-height: 430px; height: 100%;">
-				<div class="card mb-4 py-3 border-left-primary float-left">
-					<div class="card-body">test</div>
-				</div>
-				<div class="float-right card mb-4 py-3 border-right-primary">
-					<div class="card-body">test</div>
-				</div>
+			<div class="MyTextWindow">
+				<?php
+					if(isset($_POST['profile'])){
+						if($_POST['profile']!=$_SESSION['login']){
+							$stmt = $pdo->query("SELECT message FROM chat WHERE id");
+						}
+					}
+					else{
+						echo '
+						<div class="MyReciver">
+							<div class="MyReciverBlock">
+								Sam do siebie pisać nie będziesz chyba co?
+							</div>
+						</div>'
+					}
+				?>
+			</div>
+			<div class="card-footer text-muted">
+				<textarea class="form-control" rows="1" maxlength="255" placeholder="Wyślij wiadomość" form="textchat" style="width: 75%; float: left; margin-right: 5%;"></textarea>
+				<form id="textchat" style="width: 20%; float: left;">
+					<input type="submit" class="btn btn-primary mb-2">
+				</form>
 			</div>
 		</div>
 	</div>

@@ -216,7 +216,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php if($row['user_firstname']==""&&$row['user_lastname']==""){echo "To ja :P";}else{echo $row['user_firstname']." ".$row['user_lastname']; }?></span>
-                <img class="img-profile rounded-circle" src=
+                <img class="img-profile rounded-circle" id="img-profilep" src=
 					<?php
 						$path = "img/avatar/".$_SESSION['login'].".jpg";
 						if(file_exists($path)){echo '"img/avatar/'.$_SESSION['login'].'.jpg?='.filemtime($path).'"';}else{echo '"img/photo.png"';}
