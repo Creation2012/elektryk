@@ -11005,3 +11005,7 @@ body.sidebar-toggled footer.sticky-footer {
 .MyHand:hover{
 	cursor: pointer;
 }
+.margin-auto{
+	margin: auto;
+	padding-bottom: 20px;
+}
