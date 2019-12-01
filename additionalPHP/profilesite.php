@@ -1,5 +1,10 @@
 <?php
+	session_start();
+	if(isset($_POST['profile'])){
 	$id = $_POST['profile'];
+	}else{
+		$id = $_SESSION['login'];
+	}
 	include "connect.php";
 	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone FROM user WHERE user_id = '.$id.';');
 	$row = $stmt -> fetch();
@@ -108,10 +113,11 @@
 </div>
 <div class="row justify-content-center">
 	<?php
-		$profile = $_POST['profile'];
-		session_start();
+		if(isset($_POST['profile'])){
+		$profile = $_POST['profile'];}
+		else{$profile=$_SESSION['login'];}
 		if($_SESSION['login']==$profile){
-			echo ('<div id="personaldata" class="btn btn-primary btn-icon-split MyHand" value="'.$_POST['profile'].'">
+			echo ('<div id="personaldata" class="btn btn-primary btn-icon-split MyHand" value="'.$_SESSION['login'].'">
 					<span class="icon text-white-50"><i class="fas fa-check"></i></span>
 					<span class="text">Edytuj dane swojego konta</span>
 				</div>');

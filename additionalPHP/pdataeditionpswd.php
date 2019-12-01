@@ -47,11 +47,12 @@
 	}
 	var start = "<?php if($_POST['Password']==$_POST['RPassword']&&($passwordv||$passwordvm)){
 		try {
+		session_start();
 		$password = sha1($_POST['Password']);
 		$stmt = $pdo -> prepare('UPDATE user SET user_password = :password WHERE user_id = :id;');
 		$stmt -> execute([
 		':password'=>$password,
-		':id'=>$_POST['profile'],
+		':id'=>$_SESSION['login'],
 		]);
 		$stmt -> closeCursor();
 		echo 1;

@@ -35,7 +35,7 @@
         <div class="modal-body">Naciśnij "wyloguj się" poniżej by zakączyć bieżącą sesję.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
-          <a class="btn btn-primary" href="login.html">Wyloguj się</a>
+          <a class="btn btn-primary" href="additionalPHP/logout.php" style="color: white;">Wyloguj się</a>
         </div>
       </div>
     </div>
