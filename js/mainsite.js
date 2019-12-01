@@ -4,7 +4,37 @@ $(document).ready(function(){
 			$('.userprofile').click(function(){
 				var profile = $(this).val();
 				$('#main-content').load("additionalPHP/profilesite.php",{profile: profile},function(){
+					var date = $.now();
+					setInterval(function(){
+							$.ajax({
+								url: 'additionalPHP/returnMessage.php',
+								type: 'POST',
+								data: {profile: profile, date: date},
+								success: function(msg){
+								$('.MyTextWindow').append(msg);								
+								}
+							});
+						}, 5000);
+					
+					$('#sendmessage').click(function(event){
+						event.preventDefault();
+						var message = $('#messagearea').val();
+						if(message==""){
+							alert("Uzupełnij najpierw pole wiadomości!");
+						}
+						else{
+							$.ajax({
+								url: 'additionalPHP/addMessage.php',
+								type: 'POST',
+								data: {profile: profile, message: message},
+								success: function(msg){
+									$('.MyTextWindow').append(msg);
+								}
+							});
+						}
+					});
 					$('#personaldata').click(function(){
+						clearInterval(refreshIntervalId);
 						$('#main-content').load("additionalPHP/personalinfo.php",{profile: profile},function(){
 							$('#photo').click(function(){
 								$('input:file')[0].click();
@@ -68,6 +98,7 @@ $(document).ready(function(){
 	});
 	
 	$('#yoursite').click(function(){
+		clearInterval(refreshIntervalId);
 		var profile = $(this).attr('val');
 		$('#main-content').load("additionalPHP/profilesite.php",function(){
 			$('#personaldata').click(function(){

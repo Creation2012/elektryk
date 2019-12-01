@@ -1,14 +1,14 @@
 <?php
 	session_start();
-	$you = 0;
+	$isityou = 0;
 	if(isset($_POST['profile'])){
 	$id = $_POST['profile'];
 		if($_POST['profile']==$_SESSION['login']){
-			$you = 1;
+			$isityou = 1;
 		}
 	}else{
 		$id = $_SESSION['login'];
-		$you = 1;
+		$isityou = 1;
 	}
 	include "connect.php";
 	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone FROM user WHERE user_id = '.$id.';');
@@ -105,7 +105,7 @@
 	<div class="col-lg-2">
 	</div>
 	<div class="col-lg-4 col-sm-12">
-		<div <?php if($you){echo "style='display: none;' ";}?>class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
+		<div <?php if($isityou){echo "style='display: none;' ";}?>class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
 			<div class="card-header py-3 justify-content-md-center row ml-md-1 mr-md-1 border-top">
 				  <h6 class="m-0 font-weight-bold text-primary">Czat tekstowy:</h6>
 			</div>
@@ -113,7 +113,35 @@
 				<?php
 					if(isset($_POST['profile'])){
 						if($_POST['profile']!=$_SESSION['login']){
-							$stmt = $pdo->query("SELECT message FROM chat WHERE id");
+							$notyou = $_POST['profile'];
+							$you = $_SESSION['login'];
+							$stmt = $pdo->query("SELECT message,id_nadawca,id_odbiorca FROM chat WHERE (id_nadawca = $you AND id_odbiorca = $notyou) OR (id_nadawca = $notyou AND id_odbiorca = $you) ORDER BY send_time ASC;");
+							foreach($stmt as $row){
+								if($row['id_nadawca']==$you){
+									echo '
+									<div class="MySender">
+										<div class="MySenderBlock">
+											'.$row['message'].'
+										</div>
+									</div>';
+								}
+								else{
+									echo '
+									<div class="MyReciver">
+										<div class="MyReciverBlock">
+											'.$row['message'].'
+										</div>
+									</div>';
+								}
+							}
+						}
+						else{
+							echo '
+							<div class="MyReciver">
+								<div class="MyReciverBlock">
+									Sam do siebie pisać nie będziesz chyba co?
+								</div>
+							</div>';	
 						}
 					}
 					else{
@@ -122,14 +150,14 @@
 							<div class="MyReciverBlock">
 								Sam do siebie pisać nie będziesz chyba co?
 							</div>
-						</div>'
+						</div>';
 					}
 				?>
 			</div>
 			<div class="card-footer text-muted">
-				<textarea class="form-control" rows="1" maxlength="255" placeholder="Wyślij wiadomość" form="textchat" style="width: 75%; float: left; margin-right: 5%;"></textarea>
+				<textarea id="messagearea" class="form-control" rows="1" maxlength="255" placeholder="Wyślij wiadomość" form="textchat" style="width: 75%; float: left; margin-right: 5%;"></textarea>
 				<form id="textchat" style="width: 20%; float: left;">
-					<input type="submit" class="btn btn-primary mb-2">
+					<input type="submit" id="sendmessage" class="btn btn-primary mb-2">
 				</form>
 			</div>
 		</div>

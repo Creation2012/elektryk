@@ -11029,7 +11029,8 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .MySenderBlock{
-	padding-top: 3px;
+	padding-top: 5px;
+	padding-right: 5px;
 	padding-left: 5px;
 	border: 1px solid #e3e6f0;
     border-radius: .35rem;
@@ -11040,8 +11041,9 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .MyReciverBlock{
-	padding-top: 3px;
+	padding-top: 5px;
 	padding-right: 5px;
+	padding-left: 5px;
 	border: 1px solid #e3e6f0;
     border-radius: .35rem;
 	text-align: right;
