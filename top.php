@@ -11,7 +11,6 @@
   <title>QUARTACK</title>
 <?php 
 	session_start();
-	$_SESSION['login']=3;
 	if(isset($_SESSION['login'])){
 		include 'connect.php';
 		$stmt = $pdo -> query('SELECT user_firstname, user_lastname FROM user WHERE user_id = '.$_SESSION["login"].';');
@@ -19,7 +18,7 @@
 	}
 	else{
 		//header("Location: https://quartak.000webhostapp.com/login.html?error=1");
-		//header("Location: mamuski.html");
+		header("Location: mamuski.html");
 	}
 	
 ?>
@@ -71,6 +70,17 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Profile użytkowników</span></a>
       </li>
+	  
+	<?php
+	
+	if($_SESSION['type']==5){
+		echo '<li class="nav-item">
+        <a class="nav-link MyHand" href="admincontrol.php">
+          	<i class="fas fa-users-cog"></i>
+          <span>Edycja użytkowników</span></a>
+      </li>';
+	}
+	?>
 	  
 	  <!-- Heading -->
       <div class="sidebar-heading">

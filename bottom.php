@@ -60,6 +60,7 @@
   
   <!-- Custom javascript script-->
   <script src="js/mainsite.js"></script>
+  <script src="js/admincontrol.js"></script>
 
 </body>
 

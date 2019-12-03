@@ -7,7 +7,7 @@
 	$password = $_POST['password'];
 	$password = sha1($password);
 	
-	$stmt = $pdo->prepare('SELECT user_id FROM user WHERE user_email = :email AND user_password = :password AND user_verifyEmail = 1;');
+	$stmt = $pdo->prepare('SELECT user_id, user_verifyEmail FROM user WHERE user_email = :email AND user_password = :password AND NOT user_verifyEmail = 0;');
 	
 	$stmt -> execute([
 		'email' => $email,
@@ -21,9 +21,10 @@
 		session_regenerate_id();
 		$row = $stmt -> fetch();
 			$id = $row['user_id'];
-
+			$type = $row['user_verifyEmail'];
 		
 		$_SESSION['login']=$id;
+		$_SESSION['type']=$type;
 		echo "1";
 		//header("Location: https://quartak.000webhostapp.com/index.php");
 	}
