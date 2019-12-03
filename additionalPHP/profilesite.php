@@ -11,7 +11,7 @@
 		$isityou = 1;
 	}
 	include "connect.php";
-	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone FROM user WHERE user_id = '.$id.';');
+	$stmt = $pdo -> query('SELECT user_firstname, user_lastname, user_email, user_phone, type_name FROM user inner join user_type on user.user_verifyEmail = user_type.id WHERE user_id = '.$id.';');
 	$row = $stmt -> fetch();
 	$stmt -> closeCursor();
 ?>
@@ -83,10 +83,10 @@
 				<div class="row no-gutters align-items-center">
 					<div class="col mr-2">
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-						Etat:
+						Typ użytkownika:
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800">
-						//Ta czesc jest do zmiany kiedy dostaniesz nowy skrypt bazy danych
+						<?php echo $row['type_name'];?>
 						</div>
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 						Ostatni projekt:
@@ -155,9 +155,9 @@
 				?>
 			</div>
 			<div class="card-footer text-muted">
-				<textarea id="messagearea" class="form-control" rows="1" maxlength="255" placeholder="Wyślij wiadomość" form="textchat" style="width: 75%; float: left; margin-right: 5%;"></textarea>
-				<form id="textchat" style="width: 20%; float: left;">
-					<input type="submit" id="sendmessage" class="btn btn-primary mb-2">
+				<textarea id="messagearea" class="form-control MyTxtArea" rows="1" maxlength="255" placeholder="Wyślij wiadomość" form="textchat"></textarea>
+				<form id="textchat" class="MyChatForm" style="width: 20%; float: left;">
+					<input type="submit" id="sendmessage" class="btn btn-primary mb-2 MyTextButton">
 				</form>
 			</div>
 		</div>
@@ -169,7 +169,7 @@
 		$profile = $_POST['profile'];}
 		else{$profile=$_SESSION['login'];}
 		if($_SESSION['login']==$profile){
-			echo ('<div id="personaldata" class="btn btn-primary btn-icon-split MyHand" value="'.$_SESSION['login'].'">
+			echo ('<div id="personaldata" class="MyLabel btn btn-primary btn-icon-split MyHand" value="'.$_SESSION['login'].'">
 					<span class="icon text-white-50"><i class="fas fa-check"></i></span>
 					<span class="text">Edytuj dane swojego konta</span>
 				</div>');

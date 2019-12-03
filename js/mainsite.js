@@ -34,7 +34,6 @@ $(document).ready(function(){
 						}
 					});
 					$('#personaldata').click(function(){
-						clearInterval(refreshIntervalId);
 						$('#main-content').load("additionalPHP/personalinfo.php",{profile: profile},function(){
 							$('#photo').click(function(){
 								$('input:file')[0].click();
@@ -98,7 +97,6 @@ $(document).ready(function(){
 	});
 	
 	$('#yoursite').click(function(){
-		clearInterval(refreshIntervalId);
 		var profile = $(this).attr('val');
 		$('#main-content').load("additionalPHP/profilesite.php",function(){
 			$('#personaldata').click(function(){

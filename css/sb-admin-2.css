@@ -11013,6 +11013,7 @@ body.sidebar-toggled footer.sticky-footer {
 .margin-auto{
 	margin: auto;
 	padding-bottom: 20px;
+}
 
 .MySender{
   display: flex;
@@ -11062,4 +11063,29 @@ body.sidebar-toggled footer.sticky-footer {
   flex-grow: 1;
   overflow: auto;
   min-height: 0;
+}
+
+.MyChatForm{
+  width: 20%; 
+  float: left;	
+}
+
+.MyTxtArea{
+  width: 75%; 
+  float: left;
+  margin-right: 5%;  
+}
+
+@media (mAX-width:1600px){
+	.MyChatForm{
+		width: 100%;
+	}
+	.MyTxtArea{
+		width: 100%;
+		float: left;
+		margin-right: 0%;
+	}
+	.MyTextButton{
+		width: 500%;
+	}
 }
