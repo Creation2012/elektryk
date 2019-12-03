@@ -11,7 +11,7 @@
   <title>QUARTACK</title>
 <?php 
 	session_start();
-	$_SESSION['login']=1;
+	$_SESSION['login']=3;
 	if(isset($_SESSION['login'])){
 		include 'connect.php';
 		$stmt = $pdo -> query('SELECT user_firstname, user_lastname FROM user WHERE user_id = '.$_SESSION["login"].';');

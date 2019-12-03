@@ -5,8 +5,7 @@ $(document).ready(function(){
 				var profile = $(this).val();
 				$('#main-content').load("additionalPHP/profilesite.php",{profile: profile},function(){
 					var now = new Date();
-					var date = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
-					alert(date);
+					var date = "'"+now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+now.getMinutes()+':'+(now.getSeconds()-1)+"'";
 					setInterval(function(){
 							$.ajax({
 								url: 'additionalPHP/returnMessage.php',
@@ -16,6 +15,8 @@ $(document).ready(function(){
 								$('.MyTextWindow').append(msg);								
 								}
 							});
+							now = new Date();
+							date = "'"+now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+now.getMinutes()+':'+(now.getSeconds()-1)+"'";
 						}, 5000);
 					
 					$('#sendmessage').click(function(event){
