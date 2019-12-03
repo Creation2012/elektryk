@@ -219,4 +219,12 @@ $(document).ready(function(){
 			});
 		});
 	});
+	
+	$('#project').click(function(){
+		window.location.href='project-2.php';
+	});
+	
+	$('#calendar').click(function(){
+		window.location.href='calendar.php';
+	});
 });

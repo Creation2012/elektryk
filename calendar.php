@@ -1,57 +1,14 @@
-<!DOCTYPE html>
-<html lang='pl'>
-  <head>
-    <meta charset='utf-8' />
-	<style>
-	/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+<?php include 'top.php'; ?>
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 25%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  text-align: right;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-	</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> --->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales-all.js"> </script>
-  
- <?php require('connect.php'); ?>
+
  
   <script> 
   document.addEventListener('DOMContentLoaded', function() {
@@ -150,57 +107,23 @@
   });
   });
   </script>
-	
-	
-  </head>
   
-  <body>
+<div class="container-fluid" id="main-content">
+		
+<div class="col-lg-12">
 
-		<div id="myModal" class="modal">
-			  <!-- Modal content -->
-			  <div class="modal-content">
-				<span class="close">&times;</span>
-				<form name="f_modal" class="col-lg-12">
-					<div class="form-group">
-						<label for="exampleFormControlInput1">Nazwa projektu:</label>
-						<input type="text" class="form-control" id="Name" placeholder="Wprowadź nazwę projektu" required>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1">Kategoria:</label>
-						<select class="form-control" id="Category" required>
-						<option value=""> Wybierz </option>
-						  <?php 
-							$stmt = $pdo->query('SELECT category_id, category_name FROM category');
-							foreach($stmt as $row)
-							{
-								echo '<option value='.$row['category_id'].'>'. $row['category_name'] .'</option>';
-							}
-							
-							$stmt->closeCursor();
-							
-						  ?>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1">Wartość:</label>
-						<input type="text" class="form-control" id="Income" placeholder="Wprowadź wartość projektu" required>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1">Start:</label>
-						<input type="datetime" class="form-control" id="Start" placeholder="data" required>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1">Deadline:</label>
-						<input type="datetime" class="form-control" id="End" placeholder="data" required>
-					</div>
-					<input type="button" id="add" class="btn btn-primary mb-2" value="Dodaj">
-				</form>
-			  </div>
-
-			</div>
-		<div id='calendar'> 
-	
+  <div class="card shadow mb-4">
+	<div class="card-header py-3">
+	  <h6 class="m-0 font-weight-bold text-primary">Kalendarz</h6>
+	</div>
+	<div class="card-body">
+		<div id="calendar">
 		</div>
+	</div>
+  </div>
+
+</div>
+</div>
 
 	
 	<script>
@@ -227,5 +150,4 @@
 	});
 	</script>
 
-  </body>
-</html>
+<?php //include 'bottom.php'; ?>
