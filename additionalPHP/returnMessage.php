@@ -4,8 +4,8 @@
 	$you = $_SESSION['login'];
 	$notyou = $_POST['profile'];
 	$date = $_POST['date'];
-	echo 'SELECT datediff(ms,FROM_UNIXTIME('.$date.'/1000),send_time) as diff, message FROM chat WHERE diff > 0 AND id_nadawca = '.$notyou.' AND id_odbiorca = '.$you.' ORDER BY diff DESC;';
-	$stmt = $pdo -> prepare('SELECT datediff(ms,FROM_UNIXTIME(:date/1000),send_time) as diff, message FROM chat WHERE diff > 0 AND id_nadawca = :notyou AND id_odbiorca = :you ORDER BY diff DESC;');
+	echo 'SELECT datediff("'.$date.'",send_time) as diff, message FROM chat WHERE diff > 0 AND id_nadawca = '.$notyou.' AND id_odbiorca = '.$you.' ORDER BY diff DESC;';
+	$stmt = $pdo -> prepare('SELECT datediff(:date,send_time) as diff, message FROM chat WHERE diff > 0 AND id_nadawca = :notyou AND id_odbiorca = :you ORDER BY diff DESC;');
 	$stmt -> execute([
 	':date' => $date,
 	':notyou' => $notyou,

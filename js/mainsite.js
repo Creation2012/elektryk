@@ -4,7 +4,9 @@ $(document).ready(function(){
 			$('.userprofile').click(function(){
 				var profile = $(this).val();
 				$('#main-content').load("additionalPHP/profilesite.php",{profile: profile},function(){
-					var date = $.now();
+					var now = new Date();
+					var date = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+					alert(date);
 					setInterval(function(){
 							$.ajax({
 								url: 'additionalPHP/returnMessage.php',
