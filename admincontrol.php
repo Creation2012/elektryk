@@ -24,7 +24,7 @@
 						$stmt = $pdo -> query('SELECT user_id,type_name,user_email,user_created, datediff(now(),user_created) as okres FROM user INNER JOIN user_type on user_verifyEmail = user_type.id WHERE user_verifyEmail = 0;');
 						foreach($stmt as $row){
 							echo '
-							<tr class="'; if($row['okres']>2){echo "table-danger";}echo'">
+							<tr class="'; if($row['okres']>2){echo "table-danger";}echo'" >
 							<td>'.$row['user_id'].'</td>
 							<td>'.$row['type_name'].'</td>
 							<td>'.$row['user_email'].'</td>
@@ -62,8 +62,18 @@
 						foreach($stmt as $row){
 							echo '
 							<tr>
+							
 							<td>'.$row['user_id'].'</td>
-							<td>'.$row['type_name'].'</td>
+							<td> <button class="btn button-secondary dropdown-toggle editwho" style="width: 100%;"  name="'.$row['user_id'].'" type="button" id="dropdownMenuButton'.$row['user_id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$row['type_name'].'</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton'.$row['user_id'].'">
+								<a class="dropdown-item" value="2" name="Design">Design</a>
+								<a class="dropdown-item" value="3" name="Programista">Programista</a>
+								<a class="dropdown-item" value="4" name="Tester">Tester</a>
+								<a class="dropdown-item" value="6" name="Projektant">Projektant</a>
+								<a class="dropdown-item" value="7" name="Lider">Lider</a>
+								<a class="dropdown-item" value="5" name="Admin">Admin</a>
+							</div>
+							</td>
 							<td>'.$row['user_email'].'</td>
 							<td>'.$row['user_created'].'</td>
 							<td>'.$row['user_modified'].'</td> 
