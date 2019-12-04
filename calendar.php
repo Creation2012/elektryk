@@ -89,6 +89,10 @@
 						<label for="exampleFormControlInput1">Deadline:</label>
 						<input type="datetime" class="form-control" id="End" placeholder="data" required>
 					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Ilość pracowników:</label>
+						<input type="number" min="0" class="form-control" id="Max" placeholder="Wprowadź ilość pracowników" required>
+					</div>
 					<input type="button" id="add" class="btn btn-primary mb-2" value="Dodaj">
 				</form>
 			  </div>
@@ -219,10 +223,11 @@
 		var category  = $("#Category").val();
 		var start = $("#Start").val(); 
 		var end = $("#End").val();
+		var max = $("#Max").val();
 		  $.ajax({
 		   url:"add_calendar.php",
 		   type:"POST",
-		   data:{title:title, income:income, category:category, start:start, end:end},
+		   data:{title:title, income:income, category:category, start:start, end:end, max:max},
 		   success:function()
 		   {
 			alert("Dodano");
@@ -273,5 +278,20 @@
     </div>
   </div>
   
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+  
+  <!-- Custom javascript script-->
   <script src="js/mainsite.js"></script>
+  <script src="js/admincontrol.js"></script>
 <?php //include 'bottom.php'; ?>

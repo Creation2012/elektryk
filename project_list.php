@@ -1,3 +1,9 @@
+<style>
+	.none:hover{
+		text-decoration: none;
+	}
+</style>
+
 <div class="container-fluid" id="main-content">
 		
 	<div class="col-lg-12">
@@ -16,7 +22,7 @@
 		<hr>
 		<div class="row">
 			<?php
-			$stmt = $pdo -> query("SELECT * FROM project");
+			$stmt = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id ORDER BY project.project_id");
 			$stmt2 = $pdo -> prepare("SELECT * FROM project_handler WHERE project_id = :project_id");
 			$stmt22 = $pdo -> prepare("SELECT DISTINCT user_id FROM project_handler WHERE project_id = :project_id");
 			$stmt3 = $pdo -> prepare("SELECT user_id, user_firstname, user_lastname, user_email, user_verifyEmail, color, type_name FROM user inner join user_type on user.user_verifyEmail = user_type.id WHERE user_id = :user_id");
@@ -33,14 +39,14 @@
 					'project_id' => $row['project_id'],
 				]);
 				
-				echo '<a href="?id='.$row['project_id'].'"> <div class="col-lg-4 col-md-6 col-sm-12"> 
+				echo '<a class="none" href="?id='.$row['project_id'].'"> <div class="btn-grad col-lg-4 col-md-6 col-sm-12 none"> 
 				<div class="card-header py-3 justify-content-md-center row ml-md-1 mr-md-1 border-top">
 				  <h6 class="m-0 font-weight-bold text-primary">'.$row['project_name'].'</h6>
 				</div>
 				<div class="card-body">
 					<div class="row justify-content-md-center">
-						<div class="col-15">'; 
-
+						<div class="col-15">
+						<div class="justify-content-md-center row mb-md-3"><div class="btn alert-'.$row['color_name'].' btn-block pl-lg-1 pl-md-1" style="font-size: 14px; white-space: nowrap; border: 1px solid #C6CECE;">'.$row['category_name'].'</div></div>';
 						foreach($stmt2 as $row2){
 							$stmt4->execute([
 								'task_id' => $row2['task_id'],

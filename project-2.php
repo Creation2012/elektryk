@@ -15,9 +15,6 @@
 	.dupa2{
 		clear: both;
 	}
-	a{
-		text-decoration: none;
-	}
   </style>
 
 <!-- Begin Page Content -->

@@ -1,14 +1,16 @@
 <div class="container-fluid" id="main-content">
 
 	<?php 
-	
+	$stmt = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id WHERE project_id =".$_GET['id']." ORDER BY project.project_id ");
+	$stmt2 = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id WHERE project_id =".$_GET['id']." ORDER BY project.project_id ");
+	foreach($stmt as $row){
 				echo '<div class="row float-left" style="width: 100%;">
 				<div class="col-lg-6 col-sm-12">
 					<div class="justify-content-center row mt-md-3 mb-md-3">
 								</div>
 				</div>
 				<div class="col-lg-6  col-sm-12">
-					<div class="bg-gradient-primary text-white text-right" style="font-size: 50px; padding-right: 50px; letter-spacing: 5px;">QUARTACK</div>
+					<div class="bg-gradient-primary text-white text-right" style="font-size: 50px; padding-right: 50px; letter-spacing: 5px;">'.$row['project_name'].'</div>
 				</div>
 			</div>
 			<div class="row float-left" style="width: 100%;">
@@ -20,13 +22,6 @@
 		</div>
 		</div>
 		<div class="col-lg-6">
-		<div class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
-			<div class="card-body">
-			
-		</div>
-		</div>
-		</div>
-	<div class="col-lg-6">
 		<div class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
 			<div class="card-body">
 			
@@ -62,7 +57,7 @@
 					</div>
 					<input type="button" id="add" class="btn btn-primary mb-2" value="Dodaj">
 				</form>
-		</div>
-	</div>';
+		</div>';
+	}
 	?>
 </div>
