@@ -11,7 +11,6 @@
   <title>QUARTACK</title>
 <?php 
 	session_start();
-	$_SESSION['login'] = 1;
 	if(isset($_SESSION['login'])){
 		include 'connect.php';
 		$stmt = $pdo -> query('SELECT user_firstname, user_lastname FROM user WHERE user_id = '.$_SESSION["login"].';');
@@ -73,7 +72,6 @@
       </li>
 	  
 	<?php
-	$_SESSION['type'] = 1;
 	if($_SESSION['type']==5){
 		echo '<li class="nav-item">
         <a class="nav-link MyHand" href="admincontrol.php">

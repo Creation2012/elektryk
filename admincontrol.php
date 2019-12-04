@@ -53,7 +53,6 @@
 							<th scope="col">Adres e-mail:</th>
 							<th scope="col">Data założenia:</th>
 							<th scope="col">Ostatnia modyfikacja:
-							<th scope="col">Zmień lub przydziel rolę:</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,11 +60,10 @@
 						$stmt = $pdo -> query('SELECT user_id,type_name,user_email,user_created,user_verifyEmail,user_modified FROM user INNER JOIN user_type on user_verifyEmail = user_type.id WHERE NOT user_verifyEmail = 0 ORDER BY user_verifyEmail;');
 						foreach($stmt as $row){
 							echo '
-							<tr>
-							
+							<tr>	
 							<td>'.$row['user_id'].'</td>
-							<td> <button class="btn button-secondary dropdown-toggle editwho" style="width: 100%;"  name="'.$row['user_id'].'" type="button" id="dropdownMenuButton'.$row['user_id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$row['type_name'].'</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton'.$row['user_id'].'">
+							<td> <button class="btn button-secondary dropdown-toggle editwho" style="width: 100%;"  name="'.$row['user_id'].'" type="button" id="'.$row['user_id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$row['type_name'].'</button>
+							<div class="dropdown-menu" aria-labelledby="'.$row['user_id'].'">
 								<a class="dropdown-item" value="2" name="Design">Design</a>
 								<a class="dropdown-item" value="3" name="Programista">Programista</a>
 								<a class="dropdown-item" value="4" name="Tester">Tester</a>
@@ -77,9 +75,6 @@
 							<td>'.$row['user_email'].'</td>
 							<td>'.$row['user_created'].'</td>
 							<td>'.$row['user_modified'].'</td> 
-							<td>'; if($row['user_verifyEmail']==1){echo '<button type="button" class="btn btn-success edittype" value="'.$row['user_id'].'"><i class="fas fa-user-plus"></i></button>';}
-							else{echo '<button type="button" class="btn btn-primary edittype" value="'.$row['user_id'].'"><i class="fas fa-user-edit"></i></button>';}
-							echo '</td>
 							</tr>';
 						}
 						$stmt -> closeCursor();

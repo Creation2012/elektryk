@@ -19,6 +19,26 @@ $(document).ready(function(){
 							date = "'"+now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+now.getMinutes()+':'+(now.getSeconds()-1)+"'";
 						}, 5000);
 					
+					$('#messagearea').bind('keyup', function(e) {
+						if(e.keyCode === 13){ 
+							var message = $('#messagearea').val();
+							if(message==""||message=='\n'){
+								alert("Uzupełnij najpierw pole wiadomości!");
+							}
+							else{
+								$.ajax({
+									url: 'additionalPHP/addMessage.php',
+									type: 'POST',
+									data: {profile: profile, message: message},
+									success: function(msg){
+										$('.MyTextWindow').append(msg);
+									}
+								});
+							}
+							document.getElementById('messagearea').value = '';
+						}
+					});
+					
 					$('#sendmessage').click(function(event){
 						event.preventDefault();
 						var message = $('#messagearea').val();

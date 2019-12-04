@@ -20,3 +20,6 @@
 	}
 	
 ?>
+<script type="text/javascript">
+	document.getElementById('messagearea').value = '';
+</script>

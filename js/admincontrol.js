@@ -15,27 +15,23 @@ $(document).ready(function(){
 	});
 	
 	//Editing accounts type
-	$('.editwho').click(function(){
-		var who = $(this).attr('name');
-		return $(this).attr('id');
-	});
-	
-	$('a').click(function(){
+	$('td a').click(function(){
 		var type = $(this).attr('value');
 		var newtype = $(this).attr('name');
-		$(this).closest('button').html(newtype);
-	});
-	
-	$('.edittype').click(function(){
-		var who = $(this).attr('value');
+		$(this).closest('div').siblings('button').html(newtype);
+		var who = $(this).closest('div').attr('aria-labelledby');
 		$.ajax({
 			url: 'additionalPHP/admincontrolbaredit.php',
 			type: 'POST',
-			data: {who: who},
+			data: {who: who,type: type},
 			success: function(msg){
 				alert(msg);
 			}
 		});
+	});
+	
+	$('.edittype').click(function(){
+		
 	});
 
 });

@@ -1,11 +1,12 @@
 <?php
 	include 'connect.php';
 	$_POST['who'];
-	$stmt = $pdo -> prepare('DELETE FROM user WHERE user_id = :id AND user_verifyEmail = 0 AND datediff(now(),user_created) > 2;');
-	$stmt -> execute([':id' => $_POST['who']]);
+	$_POST['type'];
+	$stmt = $pdo -> prepare('UPDATE user SET user_verifyEmail = :type WHERE user_id = :id;');
+	$stmt -> execute([':type' => $_POST['type'],':id' => $_POST['who'],]);
 	$test = $stmt -> rowCount();
 	if($test){
-		echo "Pomyślnie usunięto użytkownika z bazy danych!";
+		echo "Zmieniono typ użytkownika!";
 	}else{
 		echo "Coś poszło nie tak!";
 	}
