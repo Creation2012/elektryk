@@ -17,7 +17,7 @@
 			<?php
 			$stmt = $pdo -> query("SELECT user_id, user_firstname, user_lastname, user_email, user_verifyEmail, color, type_name FROM user inner join user_type on user.user_verifyEmail = user_type.id;");
 			foreach($stmt as $row){
-				$path = "../img/avatar/".$row['user_id'].".jpg";
+				$path = "img/avatar/".$row['user_id'].".jpg";
 				echo '<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="card-header py-3 justify-content-md-center row ml-md-1 mr-md-1 border-top">
 				  <h6 class="m-0 font-weight-bold text-primary">'; if($row['user_firstname']==""&&$row['user_lastname']==""){echo $row['user_email'];}else{echo $row['user_firstname'].' '.$row['user_lastname'];}echo'</h6>

@@ -1,8 +1,6 @@
 <?php
 	require('connect.php');
 	
-	
-	
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$password = sha1($password);
@@ -25,8 +23,12 @@
 		
 		$_SESSION['login']=$id;
 		$_SESSION['type']=$type;
+		if(isset($_POST['cookies'])){
+			if($_POST['cookies']=='1'){
+				setcookie('email',$email,time()+86400*30);
+			}
+		}
 		echo "1";
-		//header("Location: https://quartak.000webhostapp.com/index.php");
 	}
 	else{
 		//slowing down brutforce attack

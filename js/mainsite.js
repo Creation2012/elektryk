@@ -1,8 +1,10 @@
 $(document).ready(function(){
-	$('.searchClick').click(function(){
-		var lookfor = $('.searchInput').val();
-		alert(lookfor);
-	})
+	$('#submit2,#submit1').click(function(){
+		var lookfor = $(this).closest('div').siblings('input').val();
+		$('#main-content').load("search.php",{lookfor: lookfor},function(){
+			
+		});
+	});
 	
 	$('#logoutjs').click(function(){
 		if(confirm("Czy na pewno chcesz się wylogować?")){

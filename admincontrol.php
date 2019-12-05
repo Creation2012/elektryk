@@ -4,7 +4,7 @@
 	<!-- Begin Page Content -->
 	<div class="container-fluid" id="main-content">
 		<div class="card shadow mb-4">
-			<div class="card-header py-3">
+			<div class="card-header py-3 font-weight-bold text-primary">
 				Użytkownicy bez aktywacji konta
 			</div>
 			<div class="card-body">
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 		<div class="card shadow mb-4">
-			<div class="card-header py-3">
+			<div class="card-header py-3 font-weight-bold text-primary">
 				Zmień typ użytkownika
 			</div>
 			<div class="card-body">
