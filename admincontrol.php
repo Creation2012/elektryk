@@ -52,7 +52,7 @@
 							<th scope="col">Typ użytkownika:</th>
 							<th scope="col">Adres e-mail:</th>
 							<th scope="col">Data założenia:</th>
-							<th scope="col">Ostatnia modyfikacja:
+							<th scope="col">Ostatnia modyfikacja:</th
 						</tr>
 					</thead>
 					<tbody>

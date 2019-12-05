@@ -66,7 +66,7 @@
       </div>
 	        <!-- Nav Item - Profiles -->
       <li class="nav-item">
-        <a class="nav-link MyHand" id="profiles">
+        <a class="nav-link MyHand" href="index.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Profile użytkowników</span></a>
       </li>
@@ -133,9 +133,9 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small searchInput" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary searchClick" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -156,7 +156,7 @@
                   <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-primary searchClick" type="button">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
                     </div>
@@ -166,7 +166,7 @@
             </li>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="profileUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php if($row['user_firstname']==""&&$row['user_lastname']==""){echo "To ja :P";}else{echo $row['user_firstname']." ".$row['user_lastname']; }?></span>
                 <img class="img-profile rounded-circle" id="img-profilep" src=
 					<?php
@@ -176,7 +176,7 @@
 					>
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="profileUserDropdown">
                 <a class="dropdown-item MyHand" id="yoursite" val="<?php echo $_SESSION['login'];?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profil
@@ -186,7 +186,7 @@
                   Ustawienia
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item MyHand" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item MyHand" id="logoutjs">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Wyloguj się
                 </a>
