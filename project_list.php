@@ -26,7 +26,7 @@
 			$stmt2 = $pdo -> prepare("SELECT * FROM project_handler WHERE project_id = :project_id");
 			$stmt22 = $pdo -> prepare("SELECT DISTINCT user_id FROM project_handler WHERE project_id = :project_id");
 			$stmt3 = $pdo -> prepare("SELECT user_id, user_firstname, user_lastname, user_email, user_verifyEmail, color, type_name FROM user inner join user_type on user.user_verifyEmail = user_type.id WHERE user_id = :user_id");
-			$stmt4 = $pdo -> prepare("SELECT task_id, complete, task_name, task_description, task_start, task_end FROM task WHERE task_id = :task_id");
+			$stmt4 = $pdo -> prepare("SELECT task_id, complete, task_name, task_description, task_start, task_end FROM task WHERE task_id = :task_id LIMIT 3");
 			
 			foreach($stmt as $row){
 				$date = date_create($row['project_end']);
@@ -46,7 +46,10 @@
 				<div class="card-body">
 					<div class="row justify-content-md-center">
 						<div class="col-15">
-						<div class="justify-content-md-center row mb-md-3"><div class="btn alert-'.$row['color_name'].' btn-block pl-lg-1 pl-md-1" style="font-size: 14px; white-space: nowrap; border: 1px solid #C6CECE;">'.$row['category_name'].'</div></div>';
+						<div class="justify-content-md-center row mb-md-3">
+						<div class="btn alert-'.$row['color_name'].' btn-block pl-lg-1 pl-md-1" style="font-size: 14px; white-space: nowrap; border: 1px solid #C6CECE;">'.$row['category_name'].'
+						</div>
+						</div>';
 						foreach($stmt2 as $row2){
 							$stmt4->execute([
 								'task_id' => $row2['task_id'],
@@ -58,7 +61,7 @@
 								echo '</div>';
 							}	
 						}
-						echo '<div class="col-20">';
+						echo '<div class="col-15">';
 						foreach($stmt22 as $row22){
 							$stmt3->execute([
 								'user_id' => $row22['user_id'],
