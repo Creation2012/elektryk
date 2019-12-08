@@ -74,7 +74,7 @@
 							</td>
 							<td>'.$row['user_email'].'</td>
 							<td>'.$row['user_created'].'</td>
-							<td>'.$row['user_modified'].'</td> 
+							<td class="wedited">'.$row['user_modified'].'</td> 
 							</tr>';
 						}
 						$stmt -> closeCursor();
