@@ -39,9 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 type: "post",
                 url: "additionalPHP/add_handler.php",
                 data: {project:project, task:task, worker:worker},
-                success: function (data) {
-					alert("Dodano");
-					$('#add_task').val('');
+                success: function (msg, data) {
+					$('#reload_task').html(msg);
+					$.ajax({
+						type: "post",
+						url: "additionalPHP/reload_count.php",
+						data: {project:project},
+						success: function (msg, data) {
+							alert("Dodano");
+							$('#add_task').val('');
+							$('#reload_count').html(msg);
+							}
+						});
                 }
             });
 		   }

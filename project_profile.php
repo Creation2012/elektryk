@@ -75,7 +75,7 @@
 	<?php 
 	$stmt = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id WHERE project_id =".$_GET['id']." ORDER BY project.project_id");
 	$stmt2 = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id WHERE project_id =".$_GET['id']." ORDER BY project.project_id ");
-	$stmt3 = $pdo -> prepare("SELECT user_id, task_name FROM task INNER JOIN project_handler ON task.task_id = project_handler.task_id WHERE project_id = :project_id");
+	$stmt3 = $pdo -> query("SELECT user_id, task_name FROM task INNER JOIN project_handler ON task.task_id = project_handler.task_id WHERE project_id = ".$_GET['id']."");
 	$stmt5 = $pdo -> prepare("SELECT user_id, task_name FROM task INNER JOIN user ON task.task_id = project_handler.task_id WHERE project_id = :project_id");
 	$stmt6 = $pdo -> query("SELECT distinct project_handler.user_id,  user.user_firstname, user.user_lastname FROM project_handler INNER JOIN user ON project_handler.user_id = user.user_id WHERE project_id = ".$_GET['id']."");
 	$stmt7 = $pdo -> query("SELECT COUNT(DISTINCT user_id) as ile FROM project_handler  WHERE project_id = ".$_GET['id']." GROUP BY project_id;");
@@ -85,9 +85,6 @@
 	$task_ile = $stmt8->fetchAll();
 	
 	foreach($stmt as $row){
-				$stmt3->execute([
-					'project_id' => $row['project_id'],
-				]);
 				$date = date_create($row['project_end']);
 				$converted_date = date_format($date,"Y/m/d");
 				
@@ -210,7 +207,7 @@
 					</div>
 					<div class="card-body">
 					<div class="row justify-content-center">
-					<div class="col-lg-4">
+					<div class="col-lg-4" id="reload_count">
 						<i class="fas fa-tasks m-2"></i>';
 						$stmt9 = $pdo -> query('SELECT COUNT(completed) as ile FROM project_handler WHERE project_id = '.$_GET['id'].' AND completed = 1;');
 						foreach($stmt9 as $row9){
