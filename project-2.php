@@ -20,8 +20,13 @@
 <!-- Begin Page Content -->
 	
 	<?php 
-		if(isset($_GET['id']) || isset($_GET['id'])!=NULL ){
+		if(isset($_GET['id'])){
+			if($_GET['id']!='' && $_GET['id']!=NULL){
 			include 'project_profile.php';
+			}
+			else{
+				include 'project_list.php';
+			}
 		}
 		else{
 			include 'project_list.php';

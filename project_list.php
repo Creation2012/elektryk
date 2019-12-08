@@ -24,8 +24,8 @@
 			<?php
 			$stmt = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id ORDER BY project.project_id");
 			$stmt2 = $pdo -> prepare("SELECT * FROM project_handler WHERE project_id = :project_id");
-			$stmt22 = $pdo -> prepare("SELECT DISTINCT user_id FROM project_handler WHERE project_id = :project_id");
-			$stmt3 = $pdo -> prepare("SELECT user_id, user_firstname, user_lastname, user_email, user_verifyEmail, color, type_name FROM user inner join user_type on user.user_verifyEmail = user_type.id WHERE user_id = :user_id");
+			$stmt22 = $pdo -> prepare("SELECT DISTINCT user_id FROM project_handler WHERE project_id = :project_id;");
+			$stmt3 = $pdo -> prepare("SELECT user_id, user_firstname, user_lastname, user_email, user_verifyEmail FROM user WHERE user_id = :user_id");
 			$stmt4 = $pdo -> prepare("SELECT task_id, complete, task_name, task_description, task_start, task_end FROM task WHERE task_id = :task_id LIMIT 3");
 			
 			foreach($stmt as $row){
@@ -35,6 +35,7 @@
 				$stmt2->execute([
 					'project_id' => $row['project_id'],
 				]);
+				
 				$stmt22->execute([
 					'project_id' => $row['project_id'],
 				]);
@@ -61,23 +62,25 @@
 								echo '</div>';
 							}	
 						}
-						echo '<div class="col-15">';
+						echo '
+						<div class="justify-content-md-center row mb-md-3">
+						<div class="col-15">
+						';
 						foreach($stmt22 as $row22){
 							$stmt3->execute([
 								'user_id' => $row22['user_id'],
 							]);
 							
-							foreach($stmt3 as $row5){
-							$path = "img/avatar/".$row5['user_id'].".jpg";
+							foreach($stmt3 as $row3){
+							$path = "img/avatar/".$row3['user_id'].".jpg";
 							echo'
-							<img class="border border-grey rounded-circle" src="img/';
-							if(file_exists($path)){echo 'avatar/'.$row5['user_id'].'.jpg?='.filemtime($path).'"';}else{echo 'photo.png"';}
+							<img data-toggle="tooltip" title="'.$row3['user_firstname'].' '.$row3['user_lastname'].'" data-placement="bottom" class="border border-grey rounded-circle" src="img/';
+							if(file_exists($path)){echo 'avatar/'.$row3['user_id'].'.jpg?='.filemtime($path).'"';}else{echo 'photo.png"';}
 							echo ' alt="User" height="75" width="75">
 							';
 							}
-							
 						}
-						echo '</div>';
+						echo '</div> </div>';
 						echo '
 							<div class="justify-content-md-center row mb-md-3 mt-md-3 dupa2"><i class="fas fa-calendar-times dupa"></i> Deadline: '.$converted_date.' </div>
 							
@@ -87,13 +90,16 @@
 				</div>';
 			}
 			
+			$stmt -> closeCursor();
+			$stmt2 -> closeCursor();
+			$stmt22 -> closeCursor();
+			$stmt3 -> closeCursor();
+			$stmt4 -> closeCursor();
+			
 			?>
 		</div>
 	</div>
   </div>
-
 </div>
-
-
-		
-        </div>
+ </div>
+ 

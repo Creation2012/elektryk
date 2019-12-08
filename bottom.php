@@ -42,6 +42,12 @@
   <!-- Custom javascript script-->
   <script src="js/mainsite.js"></script>
   <script src="js/admincontrol.js"></script>
+  <script src="vendor/popper.js/dist/umd/popper.js"> </script>
+	<script>
+	$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+	})
+	</script>
 
 </body>
 
