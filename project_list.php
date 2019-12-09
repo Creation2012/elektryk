@@ -1,4 +1,5 @@
 <style>
+	
 	.none:hover{
 		text-decoration: none;
 	}
@@ -10,7 +11,18 @@
 
   <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	  <h6 class="m-0 font-weight-bold text-primary">Projekty</h6>
+	<div class="row">
+	  <div class="col-11"> <h6 class="m-0 font-weight-bold text-primary">Projekty</h6> </div> 
+	  <?php
+	  //jesli user to ldier, to mo¿e dodaæ projekt
+		/*if()
+		{
+		echo '<div class="col-1 text-right"> 
+		<button class="btn alert-primary justify-content-end" id="add_project"> <i class="fas fa-user-plus"></i> </button> 
+		</div>';
+		}*/
+		?>
+		</div>
 	</div>
 	<div class="card-body">
 		<div class="row">
@@ -23,10 +35,10 @@
 		<div class="row">
 			<?php
 			$stmt = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id ORDER BY project.project_id");
-			$stmt2 = $pdo -> prepare("SELECT * FROM project_handler WHERE project_id = :project_id");
+			$stmt2 = $pdo -> prepare("SELECT * FROM project_handler WHERE project_id = :project_id ORDER BY start_time DESC LIMIT 3");
 			$stmt22 = $pdo -> prepare("SELECT DISTINCT user_id FROM project_handler WHERE project_id = :project_id;");
 			$stmt3 = $pdo -> prepare("SELECT user_id, user_firstname, user_lastname, user_email, user_verifyEmail FROM user WHERE user_id = :user_id");
-			$stmt4 = $pdo -> prepare("SELECT task_id, complete, task_name, task_description, task_start, task_end FROM task WHERE task_id = :task_id LIMIT 3");
+			$stmt4 = $pdo -> prepare("SELECT task_id, task_name, task_description, task_start, task_end FROM task WHERE task_id = :task_id");
 			
 			foreach($stmt as $row){
 				$date = date_create($row['project_end']);
@@ -55,12 +67,23 @@
 							$stmt4->execute([
 								'task_id' => $row2['task_id'],
 							]);
-							
+							$count = $stmt4 -> rowCount();
+							if($count == 0)
+							{
+								echo '<div>';
+								echo '<div class="justify-content-md-center row mb-md-3"> Nie ma zadnych taskow </div>';
+								echo '</div>';
+							}
+							else
+							{
 							foreach($stmt4 as $row4){
+								
 								echo '<div>';
 								echo '<div class="justify-content-md-center row mb-md-3">'.$row4['task_name'].'</div>';
 								echo '</div>';
-							}	
+							}
+							}
+							
 						}
 						echo '
 						<div class="justify-content-md-center row mb-md-3">
