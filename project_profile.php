@@ -75,7 +75,7 @@
 	<?php 
 	$stmt = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id WHERE project_id =".$_GET['id']." ORDER BY project.project_id");
 	$stmt2 = $pdo -> query("SELECT * FROM project INNER JOIN category ON project.category_id = category.category_id WHERE project_id =".$_GET['id']." ORDER BY project.project_id ");
-	$stmt3 = $pdo -> query("SELECT user_id, task_name FROM task INNER JOIN project_handler ON task.task_id = project_handler.task_id WHERE project_id = ".$_GET['id']."");
+	$stmt3 = $pdo -> query("SELECT project_id, user_id, task_name, completed FROM task INNER JOIN project_handler ON task.task_id = project_handler.task_id WHERE project_id = ".$_GET['id']."");
 	$stmt5 = $pdo -> prepare("SELECT user_id, task_name FROM task INNER JOIN user ON task.task_id = project_handler.task_id WHERE project_id = :project_id");
 	$stmt6 = $pdo -> query("SELECT distinct project_handler.user_id,  user.user_firstname, user.user_lastname FROM project_handler INNER JOIN user ON project_handler.user_id = user.user_id WHERE project_id = ".$_GET['id']."");
 	$stmt7 = $pdo -> query("SELECT COUNT(DISTINCT user_id) as ile FROM project_handler  WHERE project_id = ".$_GET['id']." GROUP BY project_id;");
@@ -90,12 +90,12 @@
 				
 				
 				echo '<div class="row float-left" style="width: 100%;">
-				<div class="col-lg-12  col-sm-12">
+				<div class="col-lg-12  col-md-12 col-sm-12">
 					<div class="bg-gradient-primary text-white text-center" style="font-size: 50px; padding-right: 50px; letter-spacing: 5px;">'.$row['project_name'].'</div>
 				</div>
 			</div>
 			<div class="row float-left" style="width: 100%;">
-	<div class="col-lg-8">
+	<div class="col-lg-8 ">
 		<div class="col-lg-12 card border-left-primary shadow py-2 MyLabel" id="reload_task">
 			<div class="card-body">
 				';
@@ -103,14 +103,21 @@
 					
 					$path = "img/avatar/".$row3['user_id'].".jpg";
 					echo '<div class="row float-left mt-2 mb-2" style="width: 100%; height: 50px;">
-					<div class="col-lg-1">
+					<div class="col-lg-1 col-md-1 col-sm-1">
 					<label class="containter-check">
-					<input type="checkbox">
+					<input type="checkbox" disabled 
+					';
+					if($row3['completed'] == 1)
+					{
+						echo 'checked';
+					}
+					echo '
+					>
 					<span class="checkmark"></span>
 					</label>
 					</div>
 					
-					<div class="col-lg-8">
+					<div class="col-lg-8 col-md-8 col-sm-8">
 					<div class="h5 mb-0 font-weight-bold text-gray-800"> 
 					
 					'
@@ -119,7 +126,7 @@
 					
 					</div> ';
 					
-					echo '<div class="col-lg-3 text-right"> 
+					echo '<div class="col-lg-3 col-md-3 col-sm-3 text-right"> 
 					'; 
 					if($row3['user_id']!=NULL && $row3['user_id'] != '')
 					{
@@ -235,6 +242,8 @@
 	</div>
 	<div class="col-lg-12 card border-left-primary shadow py-2 MyLabel">
 			<div class="card-body">
+			<div class="row justify-content">
+				<div class="col-10">
 					<div class="h5 mb-0 font-weight-bold text-gray-800">Pracownicy (';
 					if(isset($ile[0]['ile'])){
 						if($ile[0]['ile']>0){
@@ -242,10 +251,22 @@
 						}else {echo '0';}
 					}else {echo '0';}
 					
-					echo '/'.$row['max_user'].')</div>
-					<hr>
-					<div class="row justify-content-center">					
+					echo '/'.$row['max_user'].') 
 					</div>
+					</div>';
+					//tutaj kod na user_type
+					/*if()
+					{
+						<div class="col-2">
+						<button class="btn alert-primary justify-content-end" id="add_user"> <i class="fas fa-user-plus"></i> </button> 
+						</div>
+					}*/
+					echo'
+					</div>
+					
+
+					<hr>
+					
 					</div>
 					<div class="card-body">';
 					
