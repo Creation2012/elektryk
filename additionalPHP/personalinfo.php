@@ -67,10 +67,14 @@
 						<div class="col-3"></div>
 							<?php
 							$path = "../img/avatar/".$id.".jpg";
-							echo '<div class="col-6" style="text-align: center;"><img id="photo" class="border border-grey rounded-circle MyHand" src="img/';
+							echo '<div class="col-6 MyContainer" style="text-align: center;"><img id="photo" class="border border-grey rounded-circle MyHand" src="img/';
 							if(file_exists($path)){echo 'avatar/'.$id.'.jpg"';}else{echo 'photo.png"';}
-							echo ' alt="User" height="100" width="100"></div>';
+							echo ' alt="User" height="100" width="100">';
 							?>
+							<div class="MyOverlay MyHand">
+								<div class="MyText">Zmień zdjęcie</div>
+							</div>
+							</div>
 						<div class="col-3"></div>
 					</div>
 					<input type="file" id="avatar" name="avatar" accept="image/*" style="display: none;">

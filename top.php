@@ -11,14 +11,14 @@
   <title>QUARTACK</title>
 <?php 
 	session_start();
+
 	if(isset($_SESSION['login'])){
-		include 'connect.php';
+		require('connect.php');
 		$stmt = $pdo -> query('SELECT user_firstname, user_lastname FROM user WHERE user_id = '.$_SESSION["login"].';');
 		$row = $stmt -> fetch();
 	}
 	else{
-		//header("Location: https://quartak.000webhostapp.com/login.html?error=1");
-		header("Location: mamuski.html");
+		header("Location: https://quartak.000webhostapp.com/login.html");
 	}
 	
 ?>

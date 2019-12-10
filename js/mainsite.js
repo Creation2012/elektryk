@@ -69,7 +69,7 @@ $(document).ready(function(){
 			});
 			$('#personaldata').click(function(){
 				$('#main-content').load("additionalPHP/personalinfo.php",{profile: profile},function(){
-					$('#photo').click(function(){
+					$('#photo, .MyOverlay').click(function(){
 						$('input:file')[0].click();
 					});
 					$('#pphoto').click(function(event){
