@@ -11125,3 +11125,8 @@ body.sidebar-toggled footer.sticky-footer {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
+
+.MyTableSelect {
+	border: 2px solid #ADD8E6;
+	background-color: #ADD8E6;
+}

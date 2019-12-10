@@ -23,7 +23,7 @@
 				$stmt -> execute([':lookfor' => '%'.$lookfor.'%']);
 				foreach($stmt as $row){
 					echo '
-					<tr>
+					<tr class="users" value="'.$row['user_id'].'">
 					<td>'.$row['user_id'].'</td>
 					<td>'.$row['type_name'].'</td>
 					<td>'.$row['user_email'].'</td>
@@ -59,7 +59,7 @@
 				$stmt -> execute([':lookfor' => '%'.$lookfor.'%']);
 				foreach($stmt as $row){
 					echo '
-					<tr>
+					<tr class="projects" value="'.$row['project_id'].'">
 					<td>'.$row['project_id'].'</td>
 					<td>'.$row['project_name'].'</td>
 					<td>'.$row['project_description'].'</td>
